@@ -538,9 +538,9 @@
             <p>Choose from three different test versions, each with unique questions covering the same PMP concepts.</p>
             
             <div class="test-buttons">
-                <button class="test-btn" onclick="console.log('Button A clicked'); startTest(1);">Test Version A</button>
-                <button class="test-btn" onclick="console.log('Button B clicked'); startTest(2);">Test Version B</button>
-                <button class="test-btn" onclick="console.log('Button C clicked'); startTest(3);">Test Version C</button>
+                <button class="test-btn" onclick="startTest(1)">Test Version A</button>
+                <button class="test-btn" onclick="startTest(2)">Test Version B</button>
+                <button class="test-btn" onclick="startTest(3)">Test Version C</button>
             </div>
 
             <div class="options">
@@ -680,832 +680,158 @@
     </div>
 
     <script>
-        console.log("Script starting...");
-        
-        // Application state
-        var currentTest = 1;
-        var currentQuestionIndex = 0;
-        var userAnswers = {};
-        var testStartTime = null;
-        var timerInterval = null;
-        var timeRemaining = 230 * 60; // 230 minutes in seconds
-        var testCompleted = false;
-
-        // Domain mappings
-        var domainInfo = {
-            'I': { name: 'People', weight: 0.42, questions: 76 },
-            'II': { name: 'Process', weight: 0.50, questions: 90 },
-            'III': { name: 'Business Environment', weight: 0.08, questions: 14 }
-        };
-
-        // Generate demo questions function
-        function generateDemoQuestions(version, count) {
-            console.log("Generating " + count + " demo questions for version " + version);
-            var demoQuestions = [];
-            
-            // Calculate questions per domain based on PMP weights
-            var peopleQuestions = Math.floor(count * 0.42); // 42%
-            var processQuestions = Math.floor(count * 0.50); // 50%
-            var businessQuestions = count - peopleQuestions - processQuestions; // Remaining 8%
-
-            console.log("People: " + peopleQuestions + ", Process: " + processQuestions + ", Business: " + businessQuestions);
-
-            // Sample question template
-            var baseQuestion = {
-                question: "A project manager faces a challenging situation that requires careful consideration of stakeholder needs and project objectives. What is the most appropriate approach?",
-                options: [
-                    "Analyze the situation and engage stakeholders in finding a solution",
-                    "Make a quick decision to avoid delays",
-                    "Escalate the issue to senior management",
-                    "Follow established procedures without deviation"
-                ],
-                correct: 0,
-                feedback: "Analyzing situations and engaging stakeholders demonstrates collaborative leadership and helps ensure decisions align with project objectives and stakeholder needs."
-            };
-
-            // Generate People domain questions
-            for (var i = 0; i < peopleQuestions; i++) {
-                demoQuestions.push({
-                    id: version.toLowerCase() + "_people_" + (i + 1),
-                    domain: "I." + ((i % 14) + 1),
-                    domainName: "People",
-                    question: baseQuestion.question + " (People Domain - Question " + (i + 1) + ")",
-                    options: baseQuestion.options.slice(),
-                    correct: baseQuestion.correct,
-                    feedback: baseQuestion.feedback
-                });
-            }
-
-            // Generate Process domain questions
-            for (var j = 0; j < processQuestions; j++) {
-                demoQuestions.push({
-                    id: version.toLowerCase() + "_process_" + (j + 1),
-                    domain: "II." + ((j % 17) + 1),
-                    domainName: "Process",
-                    question: baseQuestion.question + " (Process Domain - Question " + (j + 1) + ")",
-                    options: baseQuestion.options.slice(),
-                    correct: baseQuestion.correct,
-                    feedback: baseQuestion.feedback
-                });
-            }
-
-            // Generate Business Environment domain questions
-            for (var k = 0; k < businessQuestions; k++) {
-                demoQuestions.push({
-                    id: version.toLowerCase() + "_business_" + (k + 1),
-                    domain: "III." + ((k % 4) + 1),
-                    domainName: "Business Environment",
-                    question: baseQuestion.question + " (Business Environment - Question " + (k + 1) + ")",
-                    options: baseQuestion.options.slice(),
-                    correct: baseQuestion.correct,
-                    feedback: baseQuestion.feedback
-                });
-            }
-
-            console.log("Generated " + demoQuestions.length + " questions for version " + version);
-            return demoQuestions;
-        }
-
-        // Test data structure - original questions rewritten to avoid copyright
-        var testQuestions = {
+        // Test data structure - simplified for demonstration
+        const testQuestions = {
             1: [ // Test Version A
                 {
-                    id: "people_001",
+                    id: "840664",
                     domain: "I.6",
                     domainName: "People",
-                    question: "A project manager takes over a team where members frequently disagree on technical approaches and show little respect for each other's contributions. After implementing new leadership practices, the team begins communicating better and establishing collaborative procedures. What team development stage has the team reached?",
+                    question: "A project manager joins a project team, replacing a manager who left. During initial meetings, the project manager realized that the team members have differing opinions about how to address technical decisions. Team members did NOT respect each other's ideas, and the environment was becoming counterproductive. However, now with the new manager's leadership, the team has begun to communicate more effectively and develop some processes and procedures for working together. In what phase of development is the team now?",
                     options: ["Forming", "Storming", "Norming", "Performing"],
                     correct: 2,
-                    feedback: "The norming stage is characterized by team members developing mutual respect, establishing working procedures, and beginning to collaborate effectively. This follows the initial forming and storming phases."
+                    feedback: "During the norming phase, team members begin to work together and adjust their work habits and behaviors to support the team. The team members learn to trust each other."
                 },
                 {
-                    id: "people_002",
+                    id: "840679",
                     domain: "I.6",
                     domainName: "People",
-                    question: "Three interdependent project teams are working on separate components that must integrate seamlessly. The team lead is concerned about potential integration conflicts. What should the project manager recommend?",
+                    question: "A project is comprised of three highly dependent parts, each being completed by its own project team. The team leader, worried that conflicts might arise when the outputs from the three teams are combined, asks for advice. What advice should the project manager provide?",
                     options: [
-                        "Establish regular coordination meetings between all three teams to proactively identify and address potential conflicts",
-                        "Prioritize one team's work and delay the others to eliminate any possibility of conflicts",
-                        "Wait for conflicts to emerge and document them as they occur for future resolution",
-                        "Allow all teams to continue independently and address integration issues during final testing"
+                        "Identify potential conflicts and then arrange for a weekly joint meeting with the members of the three teams to review each other's work.",
+                        "Decide which team's work should be prioritized, then delay the work from the other two teams to ensure there are NO conflicts.",
+                        "Document conflicts as they occur and take action to remedy any problems that arise.",
+                        "Continue to let all three teams work simultaneously, recognizing that conflicts can be addressed at the testing phase."
                     ],
                     correct: 0,
-                    feedback: "Proactive communication and coordination between interdependent teams is essential for identifying potential conflicts early and maintaining project integration. Regular cross-team meetings facilitate this coordination."
+                    feedback: "Consistent communication is important for ensuring a lower probability of issues and successfully addressing existing risks."
                 },
                 {
-                    id: "process_001",
+                    id: "840649",
                     domain: "II.5",
                     domainName: "Process",
-                    question: "A project with a $150,000 budget should be 80% complete but is only 60% complete. The actual cost spent is $95,000. Calculate the Schedule Performance Index (SPI) and Cost Performance Index (CPI).",
+                    question: "A project that should have been 90% complete by now is only 65% complete. The total project budget is US$120,000 and the actual cost spent to date (AC) is US$80,000. What is the scheduled performance index (SPI) and cost performance index (CPI) of this project?",
                     options: [
-                        "SPI = 0.75, CPI = 0.95",
-                        "SPI = 1.33, CPI = 1.05",
-                        "SPI = 0.80, CPI = 1.20",
-                        "SPI = 0.90, CPI = 0.85"
+                        "The SPI is 0.72, and the CPI is 0.98.",
+                        "The SPI is 1.38, and the CPI is 1.2.",
+                        "The SPI is 0.94, and the CPI is 1.04.",
+                        "The SPI is 0.80, and the CPI is 0.91."
                     ],
                     correct: 0,
-                    feedback: "Earned Value = 60% × $150,000 = $90,000. Planned Value = 80% × $150,000 = $120,000. SPI = EV/PV = $90,000/$120,000 = 0.75. CPI = EV/AC = $90,000/$95,000 = 0.95. Values less than 1.0 indicate behind schedule and over budget."
+                    feedback: "EV = % complete * budget: 65% * $120,000 = $78,000, AC = $80,000. CPI = EV/AC = $78,000/80,000 = 0.975 or 0.98. A CPI less than 1 means the project is over budget. PV = % complete * budget: 90% * $120,000 = $108,000, SPI = EV/PV = $78,000/108,000 = 0.72. An SPI less than 1 means the project is behind schedule."
                 },
                 {
-                    id: "business_001",
+                    id: "840697",
                     domain: "III.1",
                     domainName: "Business Environment",
-                    question: "New regulatory requirements are expected to be enacted within 4 months that will affect your product. Your project will complete in 2 months, but the product may not comply with the new regulations. How should you proceed?",
+                    question: "A new law is expected within the next 6 months that will affect a business' product line. The next product is launching and should be completed within 3 months. Unfortunately, the new product will NOT meet the requirements of the proposed law. How should the project manager respond to this potential problem?",
                     options: [
-                        "Meet with stakeholders to assess risks, update assumptions, and potentially revise the project charter based on regulatory impact",
-                        "Continue with the current plan and address compliance after the regulations are finalized",
-                        "Complete the project quickly to avoid being subject to the new regulations",
-                        "Postpone the project until the new regulations are clearly defined"
+                        "Schedule a meeting with the sponsor and key stakeholders to discuss risks. Then, using the results of the meeting, revise the assumption log and project charter.",
+                        "Revise the risk management plan. Then, move ahead with planning the project.",
+                        "Move ahead with the project, following the plan. Then ensure on-time completion, so that the product will NOT be affected by any possible rule change.",
+                        "Schedule a meeting with the sponsor and key stakeholders to warn them about the law. Then advise them to cancel the project until the legislation is finalized."
                     ],
                     correct: 0,
-                    feedback: "Regulatory changes represent significant project risks that require immediate stakeholder consultation, risk assessment, and potential scope or timeline adjustments to ensure compliance."
+                    feedback: "This new law can have a profound effect on the project. It will certainly lead to new potential risks, new assumptions, and a possible charter change."
                 }
+                // Add more questions here to reach 180 total
             ],
-            2: [ // Test Version B
+            2: [ // Test Version B - Different questions testing same concepts
                 {
-                    id: "people_006",
+                    id: "X00003",
                     domain: "I.6",
                     domainName: "People",
-                    question: "During project initiation, team members are getting acquainted, expressing enthusiasm about the project, but haven't received detailed project information yet. What team development stage is this?",
+                    question: "A project manager has assembled a project team. During initial meetings, the project manager observes that team members are getting to know each other, feeling excited and positive about the project, and have NOT been told the specific details of the project. In what phase of development is the team?",
                     options: ["Storming", "Norming", "Forming", "Performing"],
                     correct: 2,
-                    feedback: "The forming stage occurs when team members first meet and learn about the project. Members are typically polite, positive, and focused on understanding their roles and the project objectives."
+                    feedback: "The Forming phase is when the team members meet and learn about the project and their formal roles and responsibilities. Team members tend to be solitary and independent in this phase."
                 },
                 {
-                    id: "people_007", 
-                    domain: "I.6",
+                    id: "844765",
+                    domain: "I.6", 
                     domainName: "People",
-                    question: "Multiple project teams are developing highly interdependent components. The team lead wants to prevent integration conflicts. What guidance should the project manager provide?",
+                    question: "Three project teams are working on parts of a single project. The parts are highly dependent on each other. The leader of the team indicates that this might create conflicts when the outputs from the three teams are combined. What guidance should the project manager offer to the team lead?",
                     options: [
-                        "Schedule weekly coordination meetings to monitor progress and identify potential conflicts early",
-                        "Sequence the teams' work to eliminate dependencies and potential conflicts",
-                        "Create a conflict log to document issues as they arise during development",
-                        "Plan to resolve all conflicts during the integration and testing phase"
+                        "Identify potential conflicts and arrange for a weekly joint meeting with the members of the three teams to monitor each other's work.",
+                        "Decide which team's work should be prioritized, then delay the work from the other two teams to ensure there are NO conflicts.",
+                        "Document conflicts as they occur and take action to remedy any problems that arise.",
+                        "Tell all three teams to continue to work simultaneously, recognizing that conflicts can be addressed at the testing phase."
                     ],
                     correct: 0,
-                    feedback: "Early identification and prevention of conflicts through regular coordination is more effective than reactive conflict resolution. Proactive monitoring enables teams to adjust their work before conflicts become critical issues."
+                    feedback: "Before deciding to act, the project manager needs to determine the potential conflicts and monitor progress."
                 },
                 {
-                    id: "process_004",
+                    id: "844455",
                     domain: "II.5",
-                    domainName: "Process",
-                    question: "A project with a $200,000 budget should be 75% complete but shows only 65% completion. Actual costs are $140,000. What are the SPI and CPI values?",
+                    domainName: "Process", 
+                    question: "A project that should have been 90% complete by now is only 84% complete. The total project budget is US$110,000 and the actual cost to date is US$82,000. What is the schedule performance index (SPI) and cost performance index (CPI) for this project?",
                     options: [
-                        "SPI = 0.87, CPI = 0.93",
-                        "SPI = 1.15, CPI = 1.07",
-                        "SPI = 0.93, CPI = 0.87",
-                        "SPI = 1.07, CPI = 1.15"
+                        "The SPI is 0.93, and the CPI is 1.13.",
+                        "The SPI is 1.07, and the CPI is 0.99.",
+                        "The SPI is 1.15, and the CPI of 0.93.",
+                        "The SPI is 0.96, and the CPI is 1.18."
                     ],
                     correct: 0,
-                    feedback: "Earned Value = 65% × $200,000 = $130,000. Planned Value = 75% × $200,000 = $150,000. SPI = $130,000/$150,000 = 0.87. CPI = $130,000/$140,000 = 0.93. Both values below 1.0 indicate schedule delays and cost overruns."
+                    feedback: "EV = Actual% * BAC = 0.84*$110,000 = $92,400, PV = Plan% * BAC = 0.90*$110,000 = $99,000, AC = $82,000 (given). SPI = EV/PV = $92,400/$99,000 = 0.93, CPI = EV/AC = $92,400/$82,000 = 1.126 or 1.13"
                 },
                 {
-                    id: "business_003",
+                    id: "840778",
                     domain: "III.1",
                     domainName: "Business Environment",
-                    question: "Shortly after project charter approval, the team learns of new international compliance requirements that may affect the project's business case. What should the project manager do first?",
+                    question: "A project team learns about a new compliance requirement from an international entity that may impact the baseline business case for the project. They learn this right after the project charter is completed and the project sponsor has signed. How should the project manager proceed?",
                     options: [
-                        "Research the requirements thoroughly and provide recommendations to the sponsor",
-                        "Update the quality management plan to address compliance requirements",
-                        "Continue as planned since the requirement wasn't in the original scope",
-                        "Add the requirement to the risk register and seek stakeholder guidance"
+                        "Research the requirement and possible consequences, then give the sponsor a recommendation.",
+                        "Address the requirement through the creation of a quality management plan.",
+                        "Ignore the issue, as the new requirement is NOT part of the project's documented scope.",
+                        "Ensure that the requirement is documented in the risk register, then ask for further guidance from all stakeholders."
                     ],
                     correct: 0,
-                    feedback: "The project manager should research and understand the compliance requirements and their potential impact before recommending appropriate actions to the sponsor and stakeholders."
+                    feedback: "The context of this scenario requires the project manager to influence the organization (sponsor) and recommend next steps after reviewing and understanding compliance requirements and consequences."
                 }
+                // Add more questions here to reach 180 total
             ],
-            3: [ // Test Version C
+            3: [ // Test Version C - Different questions testing same concepts
                 {
-                    id: "people_008",
+                    id: "A00202",
                     domain: "I.10",
                     domainName: "People",
-                    question: "A newly formed project team includes both employees and contractors. During the kickoff meeting, team members argue about project goals and detailed requirements. What action will help build shared understanding?",
+                    question: "A newly assembled project team is holding a kickoff meeting over a weekend. About half of the project team already works together; the other team members are contractors. The company already uses lean and agile approaches. However, during the meeting, the team members openly argued about everything—from project goals to the smallest details. Which action will help the team to build a shared understanding?",
                     options: [
-                        "Separate team members by expertise and assign specific work areas",
-                        "Establish a hierarchical structure with clear authority levels",
-                        "Have the product owner facilitate discussions and clarify project objectives",
-                        "Pair employees with contractors for better knowledge transfer"
+                        "Create breakout sessions and assign team members to specific work based on their expertise.",
+                        "Nominate someone to the role of project manager and adopt a hierarchical team structure.",
+                        "Ask the product owner to lead the session and explain to the team what to do.",
+                        "The team lead should arrange the team and contractors in working pairs."
                     ],
                     correct: 2,
-                    feedback: "When teams are in the storming phase with disagreements, having the product owner provide clarity on objectives and facilitate collaborative discussions helps the team move toward shared understanding and common goals."
+                    feedback: "This team is in the storming phase, so arguments may be normal. However, they need to refocus and come together sooner rather than later. The team should collaborate, and at this stage the product owner is best qualified to offer some cohesion."
                 },
                 {
-                    id: "people_009",
+                    id: "A00081",
                     domain: "I.6",
                     domainName: "People",
-                    question: "A senior stakeholder bypasses the product owner and directly assigns urgent work to the agile team. During sprint reviews, the product owner becomes upset about this unauthorized work. How should the team address this?",
+                    question: "An R&D executive, who is a project stakeholder, occasionally visits the agile team's work area to give instructions about urgent feature work. The team begins work. During sprint reviews, the product owner becomes upset that the team worked on the requested features. How should the team address the problem?",
                     options: [
-                        "Escalate to prevent the stakeholder from interfering with the team",
-                        "Establish a working agreement between the stakeholder and product owner for handling urgent requests",
-                        "Require the stakeholder to submit formal change requests for new work",
-                        "Allow the stakeholder to add items directly to the product backlog"
+                        "Escalate to ensure that the executive no longer interferes with the team.",
+                        "Meet with the executive and product owner to agree on a work flow.",
+                        "Require that the executive issues change requests for new items.",
+                        "Give the executive access to add new items to the backlog."
                     ],
                     correct: 1,
-                    feedback: "Creating a working agreement between the stakeholder and product owner establishes clear processes for handling urgent requests while maintaining proper agile governance and team focus."
+                    feedback: "In this case, the R&D executive stakeholder is bypassing the product owner and creating disruption. A working agreement between the executive and the product owner is needed to restore order."
                 },
                 {
-                    id: "process_005",
+                    id: "844452",
                     domain: "II.5",
                     domainName: "Process",
-                    question: "A project with a $180,000 budget should be 85% complete but is only 70% complete. Actual expenditure is $135,000. Calculate the SPI and CPI.",
+                    question: "A project that should have been 70% complete by now is only 55% complete. The total project budget is US$210,000, and the actual cost spent to date is US$162,000. What is the scheduled performance index (SPI) and cost performance index (CPI) of this project?",
                     options: [
-                        "SPI = 0.82, CPI = 0.93",
-                        "SPI = 1.21, CPI = 1.07",
-                        "SPI = 0.93, CPI = 0.82",
-                        "SPI = 1.07, CPI = 1.21"
+                        "The SPI is 0.79, and the CPI is 0.71.",
+                        "The SPI is 1.27, and the CPI is 0.98.",
+                        "The SPI is 0.82, and the CPI is 1.05.",
+                        "The SPI is 0.99, and the CPI is 0.96."
                     ],
                     correct: 0,
-                    feedback: "Earned Value = 70% × $180,000 = $126,000. Planned Value = 85% × $180,000 = $153,000. SPI = $126,000/$153,000 = 0.82. CPI = $126,000/$135,000 = 0.93. Both indices below 1.0 indicate performance issues."
-                },
-                {
-                    id: "business_004",
-                    domain: "III.1",
-                    domainName: "Business Environment",
-                    question: "The legal team discovers that a competitor holds a patent for technology used in your nearly-complete product. What should the product owner do to determine the best path forward?",
-                    options: [
-                        "Research markets where the patent doesn't apply",
-                        "Conduct economic analysis to identify minimum viable features for release",
-                        "Immediately terminate the project to minimize losses",
-                        "Continue development after removing the patented technology"
-                    ],
-                    correct: 1,
-                    feedback: "When fundamental assumptions about product viability are challenged, economic analysis helps determine if there's still a viable path forward and what minimum features could still provide value while avoiding patent issues."
-                }
-            ]
-        };
-
-        // Add generated questions to reach 180 total
-        console.log("Adding generated questions to test versions...");
-        testQuestions[1] = testQuestions[1].concat(generateDemoQuestions("A", 176));
-        testQuestions[2] = testQuestions[2].concat(generateDemoQuestions("B", 176));
-        testQuestions[3] = testQuestions[3].concat(generateDemoQuestions("C", 176));
-
-        console.log("Final test question counts:");
-        console.log("Test 1: " + testQuestions[1].length);
-        console.log("Test 2: " + testQuestions[2].length);
-        console.log("Test 3: " + testQuestions[3].length);
-            1: [ // Test Version A
-                {
-                    id: "people_001",
-                    domain: "I.6",
-                    domainName: "People",
-                    question: "A project manager takes over a team where members frequently disagree on technical approaches and show little respect for each other's contributions. After implementing new leadership practices, the team begins communicating better and establishing collaborative procedures. What team development stage has the team reached?",
-                    options: ["Forming", "Storming", "Norming", "Performing"],
-                    correct: 2,
-                    feedback: "The norming stage is characterized by team members developing mutual respect, establishing working procedures, and beginning to collaborate effectively. This follows the initial forming and storming phases."
-                },
-                {
-                    id: "people_002",
-                    domain: "I.6",
-                    domainName: "People",
-                    question: "Three interdependent project teams are working on separate components that must integrate seamlessly. The team lead is concerned about potential integration conflicts. What should the project manager recommend?",
-                    options: [
-                        "Establish regular coordination meetings between all three teams to proactively identify and address potential conflicts",
-                        "Prioritize one team's work and delay the others to eliminate any possibility of conflicts",
-                        "Wait for conflicts to emerge and document them as they occur for future resolution",
-                        "Allow all teams to continue independently and address integration issues during final testing"
-                    ],
-                    correct: 0,
-                    feedback: "Proactive communication and coordination between interdependent teams is essential for identifying potential conflicts early and maintaining project integration. Regular cross-team meetings facilitate this coordination."
-                },
-                {
-                    id: "process_001",
-                    domain: "II.5",
-                    domainName: "Process",
-                    question: "A project with a $150,000 budget should be 80% complete but is only 60% complete. The actual cost spent is $95,000. Calculate the Schedule Performance Index (SPI) and Cost Performance Index (CPI).",
-                    options: [
-                        "SPI = 0.75, CPI = 0.95",
-                        "SPI = 1.33, CPI = 1.05",
-                        "SPI = 0.80, CPI = 1.20",
-                        "SPI = 0.90, CPI = 0.85"
-                    ],
-                    correct: 0,
-                    feedback: "Earned Value = 60% × $150,000 = $90,000. Planned Value = 80% × $150,000 = $120,000. SPI = EV/PV = $90,000/$120,000 = 0.75. CPI = EV/AC = $90,000/$95,000 = 0.95. Values less than 1.0 indicate behind schedule and over budget."
-                },
-                {
-                    id: "business_001",
-                    domain: "III.1",
-                    domainName: "Business Environment",
-                    question: "New regulatory requirements are expected to be enacted within 4 months that will affect your product. Your project will complete in 2 months, but the product may not comply with the new regulations. How should you proceed?",
-                    options: [
-                        "Meet with stakeholders to assess risks, update assumptions, and potentially revise the project charter based on regulatory impact",
-                        "Continue with the current plan and address compliance after the regulations are finalized",
-                        "Complete the project quickly to avoid being subject to the new regulations",
-                        "Postpone the project until the new regulations are clearly defined"
-                    ],
-                    correct: 0,
-                    feedback: "Regulatory changes represent significant project risks that require immediate stakeholder consultation, risk assessment, and potential scope or timeline adjustments to ensure compliance."
-                }
-            ],
-            2: [ // Test Version B
-                {
-                    id: "people_006",
-                    domain: "I.6",
-                    domainName: "People",
-                    question: "During project initiation, team members are getting acquainted, expressing enthusiasm about the project, but haven't received detailed project information yet. What team development stage is this?",
-                    options: ["Storming", "Norming", "Forming", "Performing"],
-                    correct: 2,
-                    feedback: "The forming stage occurs when team members first meet and learn about the project. Members are typically polite, positive, and focused on understanding their roles and the project objectives."
-                },
-                {
-                    id: "people_007", 
-                    domain: "I.6",
-                    domainName: "People",
-                    question: "Multiple project teams are developing highly interdependent components. The team lead wants to prevent integration conflicts. What guidance should the project manager provide?",
-                    options: [
-                        "Schedule weekly coordination meetings to monitor progress and identify potential conflicts early",
-                        "Sequence the teams' work to eliminate dependencies and potential conflicts",
-                        "Create a conflict log to document issues as they arise during development",
-                        "Plan to resolve all conflicts during the integration and testing phase"
-                    ],
-                    correct: 0,
-                    feedback: "Early identification and prevention of conflicts through regular coordination is more effective than reactive conflict resolution. Proactive monitoring enables teams to adjust their work before conflicts become critical issues."
-                },
-                {
-                    id: "process_004",
-                    domain: "II.5",
-                    domainName: "Process",
-                    question: "A project with a $200,000 budget should be 75% complete but shows only 65% completion. Actual costs are $140,000. What are the SPI and CPI values?",
-                    options: [
-                        "SPI = 0.87, CPI = 0.93",
-                        "SPI = 1.15, CPI = 1.07",
-                        "SPI = 0.93, CPI = 0.87",
-                        "SPI = 1.07, CPI = 1.15"
-                    ],
-                    correct: 0,
-                    feedback: "Earned Value = 65% × $200,000 = $130,000. Planned Value = 75% × $200,000 = $150,000. SPI = $130,000/$150,000 = 0.87. CPI = $130,000/$140,000 = 0.93. Both values below 1.0 indicate schedule delays and cost overruns."
-                },
-                {
-                    id: "business_003",
-                    domain: "III.1",
-                    domainName: "Business Environment",
-                    question: "Shortly after project charter approval, the team learns of new international compliance requirements that may affect the project's business case. What should the project manager do first?",
-                    options: [
-                        "Research the requirements thoroughly and provide recommendations to the sponsor",
-                        "Update the quality management plan to address compliance requirements",
-                        "Continue as planned since the requirement wasn't in the original scope",
-                        "Add the requirement to the risk register and seek stakeholder guidance"
-                    ],
-                    correct: 0,
-                    feedback: "The project manager should research and understand the compliance requirements and their potential impact before recommending appropriate actions to the sponsor and stakeholders."
-                }
-            ],
-            3: [ // Test Version C
-                {
-                    id: "people_008",
-                    domain: "I.10",
-                    domainName: "People",
-                    question: "A newly formed project team includes both employees and contractors. During the kickoff meeting, team members argue about project goals and detailed requirements. What action will help build shared understanding?",
-                    options: [
-                        "Separate team members by expertise and assign specific work areas",
-                        "Establish a hierarchical structure with clear authority levels",
-                        "Have the product owner facilitate discussions and clarify project objectives",
-                        "Pair employees with contractors for better knowledge transfer"
-                    ],
-                    correct: 2,
-                    feedback: "When teams are in the storming phase with disagreements, having the product owner provide clarity on objectives and facilitate collaborative discussions helps the team move toward shared understanding and common goals."
-                },
-                {
-                    id: "people_009",
-                    domain: "I.6",
-                    domainName: "People",
-                    question: "A senior stakeholder bypasses the product owner and directly assigns urgent work to the agile team. During sprint reviews, the product owner becomes upset about this unauthorized work. How should the team address this?",
-                    options: [
-                        "Escalate to prevent the stakeholder from interfering with the team",
-                        "Establish a working agreement between the stakeholder and product owner for handling urgent requests",
-                        "Require the stakeholder to submit formal change requests for new work",
-                        "Allow the stakeholder to add items directly to the product backlog"
-                    ],
-                    correct: 1,
-                    feedback: "Creating a working agreement between the stakeholder and product owner establishes clear processes for handling urgent requests while maintaining proper agile governance and team focus."
-                },
-                {
-                    id: "process_005",
-                    domain: "II.5",
-                    domainName: "Process",
-                    question: "A project with a $180,000 budget should be 85% complete but is only 70% complete. Actual expenditure is $135,000. Calculate the SPI and CPI.",
-                    options: [
-                        "SPI = 0.82, CPI = 0.93",
-                        "SPI = 1.21, CPI = 1.07",
-                        "SPI = 0.93, CPI = 0.82",
-                        "SPI = 1.07, CPI = 1.21"
-                    ],
-                    correct: 0,
-                    feedback: "Earned Value = 70% × $180,000 = $126,000. Planned Value = 85% × $180,000 = $153,000. SPI = $126,000/$153,000 = 0.82. CPI = $126,000/$135,000 = 0.93. Both indices below 1.0 indicate performance issues."
-                },
-                {
-                    id: "business_004",
-                    domain: "III.1",
-                    domainName: "Business Environment",
-                    question: "The legal team discovers that a competitor holds a patent for technology used in your nearly-complete product. What should the product owner do to determine the best path forward?",
-                    options: [
-                        "Research markets where the patent doesn't apply",
-                        "Conduct economic analysis to identify minimum viable features for release",
-                        "Immediately terminate the project to minimize losses",
-                        "Continue development after removing the patented technology"
-                    ],
-                    correct: 1,
-                    feedback: "When fundamental assumptions about product viability are challenged, economic analysis helps determine if there's still a viable path forward and what minimum features could still provide value while avoiding patent issues."
-                }
-            ]
-        };
-
-        // Add generated questions to reach 180 total
-        console.log("Adding generated questions to test versions...");
-        testQuestions[1] = testQuestions[1].concat(generateDemoQuestions("A", 176));
-        testQuestions[2] = testQuestions[2].concat(generateDemoQuestions("B", 176));
-        testQuestions[3] = testQuestions[3].concat(generateDemoQuestions("C", 176));
-
-        console.log("Final test question counts:");
-        console.log("Test 1:", testQuestions[1].length);
-        console.log("Test 2:", testQuestions[2].length);
-        console.log("Test 3:", testQuestions[3].length);
-            1: [ // Test Version A
-                {
-                    id: "people_001",
-                    domain: "I.6",
-                    domainName: "People",
-                    question: "A project manager takes over a team where members frequently disagree on technical approaches and show little respect for each other's contributions. After implementing new leadership practices, the team begins communicating better and establishing collaborative procedures. What team development stage has the team reached?",
-                    options: ["Forming", "Storming", "Norming", "Performing"],
-                    correct: 2,
-                    feedback: "The norming stage is characterized by team members developing mutual respect, establishing working procedures, and beginning to collaborate effectively. This follows the initial forming and storming phases."
-                },
-                {
-                    id: "people_002",
-                    domain: "I.6",
-                    domainName: "People",
-                    question: "Three interdependent project teams are working on separate components that must integrate seamlessly. The team lead is concerned about potential integration conflicts. What should the project manager recommend?",
-                    options: [
-                        "Establish regular coordination meetings between all three teams to proactively identify and address potential conflicts",
-                        "Prioritize one team's work and delay the others to eliminate any possibility of conflicts",
-                        "Wait for conflicts to emerge and document them as they occur for future resolution",
-                        "Allow all teams to continue independently and address integration issues during final testing"
-                    ],
-                    correct: 0,
-                    feedback: "Proactive communication and coordination between interdependent teams is essential for identifying potential conflicts early and maintaining project integration. Regular cross-team meetings facilitate this coordination."
-                },
-                {
-                    id: "process_001",
-                    domain: "II.5",
-                    domainName: "Process",
-                    question: "A project with a $150,000 budget should be 80% complete but is only 60% complete. The actual cost spent is $95,000. Calculate the Schedule Performance Index (SPI) and Cost Performance Index (CPI).",
-                    options: [
-                        "SPI = 0.75, CPI = 0.95",
-                        "SPI = 1.33, CPI = 1.05",
-                        "SPI = 0.80, CPI = 1.20",
-                        "SPI = 0.90, CPI = 0.85"
-                    ],
-                    correct: 0,
-                    feedback: "Earned Value = 60% × $150,000 = $90,000. Planned Value = 80% × $150,000 = $120,000. SPI = EV/PV = $90,000/$120,000 = 0.75. CPI = EV/AC = $90,000/$95,000 = 0.95. Values less than 1.0 indicate behind schedule and over budget."
-                },
-                {
-                    id: "business_001",
-                    domain: "III.1",
-                    domainName: "Business Environment",
-                    question: "New regulatory requirements are expected to be enacted within 4 months that will affect your product. Your project will complete in 2 months, but the product may not comply with the new regulations. How should you proceed?",
-                    options: [
-                        "Meet with stakeholders to assess risks, update assumptions, and potentially revise the project charter based on regulatory impact",
-                        "Continue with the current plan and address compliance after the regulations are finalized",
-                        "Complete the project quickly to avoid being subject to the new regulations",
-                        "Postpone the project until the new regulations are clearly defined"
-                    ],
-                    correct: 0,
-                    feedback: "Regulatory changes represent significant project risks that require immediate stakeholder consultation, risk assessment, and potential scope or timeline adjustments to ensure compliance."
-                },
-                {
-                    id: "people_003",
-                    domain: "I.12",
-                    domainName: "People",
-                    question: "Stakeholders are not participating consistently in requirements gathering sessions, making it difficult to identify project constraints and assumptions. What are two effective approaches to improve stakeholder engagement? (Choose TWO)",
-                    options: ["Apply political awareness techniques", "Practice servant leadership", "Use time-boxed sessions", "Employ effective facilitation methods"],
-                    correct: [1, 3],
-                    multiSelect: true,
-                    feedback: "Servant leadership focuses on serving stakeholders' needs and removing barriers to their participation. Effective facilitation ensures productive meetings where all stakeholders can contribute meaningfully to decision-making."
-                },
-                {
-                    id: "process_002",
-                    domain: "II.3",
-                    domainName: "Process",
-                    question: "Your team has identified four risks with the following probability and impact ratings (scale 1-5): Risk A (Prob: 2, Impact: 5), Risk B (Prob: 4, Impact: 3), Risk C (Prob: 3, Impact: 4), Risk D (Prob: 1, Impact: 3). How should these risks be prioritized?",
-                    options: ["B, C, A, D", "C, B, A, D", "A, B, C, D", "D, A, B, C"],
-                    correct: 0,
-                    feedback: "Risk priority is determined by multiplying probability × impact. Risk B: 4×3=12, Risk C: 3×4=12, Risk A: 2×5=10, Risk D: 1×3=3. Risks B and C tie for highest priority, followed by A, then D."
-                },
-                {
-                    id: "business_002",
-                    domain: "III.3",
-                    domainName: "Business Environment",
-                    question: "Your company is losing market share to competitors with innovative business models. An agile team is formed to recommend recovery strategies. What approach will most likely produce successful recommendations?",
-                    options: [
-                        "Analyze why customers are dissatisfied with current products",
-                        "Focus on developing unique, high-quality innovative products",
-                        "Study how competitors reach more customers at lower costs",
-                        "Understand the value customers seek and what competitors provide"
-                    ],
-                    correct: 3,
-                    feedback: "Understanding customer value expectations and competitive value propositions provides the foundation for developing effective market recovery strategies. This aligns with agile principles of customer focus and value delivery."
-                },
-                {
-                    id: "people_004",
-                    domain: "I.4",
-                    domainName: "People",
-                    question: "A team member consistently delivers work late, causing delays to dependent tasks. The team member claims they need extra time for quality assurance. How should the project manager address this situation?",
-                    options: [
-                        "Accept the delays as necessary for quality",
-                        "Coach the team member on estimation and time management techniques",
-                        "Reassign the team member to less critical tasks",
-                        "Document the performance issues for their supervisor"
-                    ],
-                    correct: 1,
-                    feedback: "Coaching helps develop the team member's skills in estimation and time management while addressing the root cause of delays. This servant leadership approach empowers the individual to improve performance."
-                },
-                {
-                    id: "process_003",
-                    domain: "II.7",
-                    domainName: "Process",
-                    question: "Four deliverables have failed to meet quality requirements specified in your quality management plan. What should be your first step?",
-                    options: [
-                        "Revise the quality management plan to match current performance",
-                        "Request additional resources from the sponsor",
-                        "Conduct root cause analysis using appropriate quality tools",
-                        "Escalate the quality issues to the project sponsor"
-                    ],
-                    correct: 2,
-                    feedback: "Root cause analysis helps identify the underlying reasons for quality failures, enabling the team to implement effective corrective actions rather than just treating symptoms."
-                },
-                {
-                    id: "people_005",
-                    domain: "I.11",
-                    domainName: "People",
-                    question: "A virtual team member has been absent from daily standups for a week following a natural disaster in their region, impacting the critical path. How should the project manager respond?",
-                    options: [
-                        "Replace the team member immediately with available resources",
-                        "Contact the team member's functional manager to handle the situation",
-                        "Obtain temporary resources to cover the work while checking on the team member's situation",
-                        "Ask other team members to contact the missing person"
-                    ],
-                    correct: 2,
-                    feedback: "In crisis situations, the project manager should show empathy while maintaining project progress. Securing temporary coverage addresses immediate project needs while allowing time to understand the team member's circumstances."
-                },
-                // Generate additional questions to reach 180 total
-                ...generateDemoQuestions("A", 170)
-            ],
-            2: [ // Test Version B
-                {
-                    id: "people_006",
-                    domain: "I.6",
-                    domainName: "People",
-                    question: "During project initiation, team members are getting acquainted, expressing enthusiasm about the project, but haven't received detailed project information yet. What team development stage is this?",
-                    options: ["Storming", "Norming", "Forming", "Performing"],
-                    correct: 2,
-                    feedback: "The forming stage occurs when team members first meet and learn about the project. Members are typically polite, positive, and focused on understanding their roles and the project objectives."
-                },
-                {
-                    id: "people_007", 
-                    domain: "I.6",
-                    domainName: "People",
-                    question: "Multiple project teams are developing highly interdependent components. The team lead wants to prevent integration conflicts. What guidance should the project manager provide?",
-                    options: [
-                        "Schedule weekly coordination meetings to monitor progress and identify potential conflicts early",
-                        "Sequence the teams' work to eliminate dependencies and potential conflicts",
-                        "Create a conflict log to document issues as they arise during development",
-                        "Plan to resolve all conflicts during the integration and testing phase"
-                    ],
-                    correct: 0,
-                    feedback: "Early identification and prevention of conflicts through regular coordination is more effective than reactive conflict resolution. Proactive monitoring enables teams to adjust their work before conflicts become critical issues."
-                },
-                {
-                    id: "process_004",
-                    domain: "II.5",
-                    domainName: "Process",
-                    question: "A project with a $200,000 budget should be 75% complete but shows only 65% completion. Actual costs are $140,000. What are the SPI and CPI values?",
-                    options: [
-                        "SPI = 0.87, CPI = 0.93",
-                        "SPI = 1.15, CPI = 1.07",
-                        "SPI = 0.93, CPI = 0.87",
-                        "SPI = 1.07, CPI = 1.15"
-                    ],
-                    correct: 0,
-                    feedback: "Earned Value = 65% × $200,000 = $130,000. Planned Value = 75% × $200,000 = $150,000. SPI = $130,000/$150,000 = 0.87. CPI = $130,000/$140,000 = 0.93. Both values below 1.0 indicate schedule delays and cost overruns."
-                },
-                {
-                    id: "business_003",
-                    domain: "III.1",
-                    domainName: "Business Environment",
-                    question: "Shortly after project charter approval, the team learns of new international compliance requirements that may affect the project's business case. What should the project manager do first?",
-                    options: [
-                        "Research the requirements thoroughly and provide recommendations to the sponsor",
-                        "Update the quality management plan to address compliance requirements",
-                        "Continue as planned since the requirement wasn't in the original scope",
-                        "Add the requirement to the risk register and seek stakeholder guidance"
-                    ],
-                    correct: 0,
-                    feedback: "The project manager should research and understand the compliance requirements and their potential impact before recommending appropriate actions to the sponsor and stakeholders."
-                },
-                // Add more Version B questions
-                ...generateDemoQuestions("B", 176)
-            ],
-            3: [ // Test Version C
-                {
-                    id: "people_008",
-                    domain: "I.10",
-                    domainName: "People",
-                    question: "A newly formed project team includes both employees and contractors. During the kickoff meeting, team members argue about project goals and detailed requirements. What action will help build shared understanding?",
-                    options: [
-                        "Separate team members by expertise and assign specific work areas",
-                        "Establish a hierarchical structure with clear authority levels",
-                        "Have the product owner facilitate discussions and clarify project objectives",
-                        "Pair employees with contractors for better knowledge transfer"
-                    ],
-                    correct: 2,
-                    feedback: "When teams are in the storming phase with disagreements, having the product owner provide clarity on objectives and facilitate collaborative discussions helps the team move toward shared understanding and common goals."
-                },
-                {
-                    id: "people_009",
-                    domain: "I.6",
-                    domainName: "People",
-                    question: "A senior stakeholder bypasses the product owner and directly assigns urgent work to the agile team. During sprint reviews, the product owner becomes upset about this unauthorized work. How should the team address this?",
-                    options: [
-                        "Escalate to prevent the stakeholder from interfering with the team",
-                        "Establish a working agreement between the stakeholder and product owner for handling urgent requests",
-                        "Require the stakeholder to submit formal change requests for new work",
-                        "Allow the stakeholder to add items directly to the product backlog"
-                    ],
-                    correct: 1,
-                    feedback: "Creating a working agreement between the stakeholder and product owner establishes clear processes for handling urgent requests while maintaining proper agile governance and team focus."
-                },
-                {
-                    id: "process_005",
-                    domain: "II.5",
-                    domainName: "Process",
-                    question: "A project with a $180,000 budget should be 85% complete but is only 70% complete. Actual expenditure is $135,000. Calculate the SPI and CPI.",
-                    options: [
-                        "SPI = 0.82, CPI = 0.93",
-                        "SPI = 1.21, CPI = 1.07",
-                        "SPI = 0.93, CPI = 0.82",
-                        "SPI = 1.07, CPI = 1.21"
-                    ],
-                    correct: 0,
-                    feedback: "Earned Value = 70% × $180,000 = $126,000. Planned Value = 85% × $180,000 = $153,000. SPI = $126,000/$153,000 = 0.82. CPI = $126,000/$135,000 = 0.93. Both indices below 1.0 indicate performance issues."
-                },
-                // Add more Version C questions
-                ...generateDemoQuestions("C", 176)
-            ]
-        };
-
-        // Generate additional demo questions to reach 180 total per test
-        function generateDemoQuestions(version, count) {
-            const demoQuestions = [];
-            const domains = [
-                { code: "I", name: "People", tasks: ["I.1", "I.2", "I.3", "I.4", "I.5", "I.6", "I.7", "I.8", "I.9", "I.10", "I.11", "I.12", "I.13", "I.14"] },
-                { code: "II", name: "Process", tasks: ["II.1", "II.2", "II.3", "II.4", "II.5", "II.6", "II.7", "II.8", "II.9", "II.10", "II.11", "II.12", "II.13", "II.14", "II.15", "II.16", "II.17"] },
-                { code: "III", name: "Business Environment", tasks: ["III.1", "III.2", "III.3", "III.4"] }
-            ];
-
-            // Sample question templates for different domains - all original content
-            const questionTemplates = {
-                "I": [
-                    {
-                        question: "A team member is struggling with a new technology required for the project. What is the best approach to address this situation?",
-                        options: ["Provide targeted training and mentoring", "Reassign the team member to different tasks", "Hire an external consultant", "Document the skill gap as a risk"],
-                        correct: 0,
-                        feedback: "Providing training and mentoring supports team member development and builds organizational capability, which is a key aspect of servant leadership."
-                    },
-                    {
-                        question: "During a project review, stakeholders express concerns about the team's approach to problem-solving. How should the project manager respond?",
-                        options: ["Defend the team's methodology", "Schedule individual meetings with each stakeholder", "Facilitate a collaborative discussion to address concerns", "Escalate to the project sponsor"],
-                        correct: 2,
-                        feedback: "Facilitating collaborative discussions helps build shared understanding and addresses stakeholder concerns through open communication."
-                    },
-                    {
-                        question: "A virtual team spread across multiple time zones is experiencing communication challenges. What should the project manager implement?",
-                        options: ["Require all team members to work the same hours", "Establish overlapping work hours and communication protocols", "Use only asynchronous communication methods", "Relocate team members to the same location"],
-                        correct: 1,
-                        feedback: "Establishing overlapping work hours and clear communication protocols accommodates global teams while ensuring effective collaboration."
-                    },
-                    {
-                        question: "Two team members have a personality conflict that is affecting team dynamics. What is the most appropriate initial response?",
-                        options: ["Separate the team members on different work streams", "Address the conflict privately with each team member first", "Ignore the conflict and hope it resolves itself", "Escalate to HR immediately"],
-                        correct: 1,
-                        feedback: "Addressing conflicts privately first allows the project manager to understand different perspectives and work toward resolution before taking more formal actions."
-                    },
-                    {
-                        question: "A team is transitioning from predictive to agile methodology. Team members are resistant to the change. How should the project manager help?",
-                        options: ["Mandate immediate adoption of all agile practices", "Provide training and gradual introduction of agile concepts", "Replace resistant team members", "Revert to predictive methodology"],
-                        correct: 1,
-                        feedback: "Gradual introduction with proper training helps team members understand the benefits of agile practices and reduces resistance to change."
-                    }
-                ],
-                "II": [
-                    {
-                        question: "A vendor has delivered components that do not meet the specified quality requirements. What should be the project manager's first step?",
-                        options: ["Accept the components and document lessons learned", "Review the contract terms and service level agreements", "Request immediate replacement components", "Escalate to senior management"],
-                        correct: 1,
-                        feedback: "Reviewing contract terms and SLAs provides the foundation for addressing vendor performance issues and determining appropriate next steps."
-                    },
-                    {
-                        question: "The project timeline has been compressed by 25% while maintaining the same scope. What is the most appropriate response?",
-                        options: ["Accept the challenge and work overtime", "Negotiate to reduce scope proportionally", "Request additional resources to meet the timeline", "Analyze options and present recommendations to stakeholders"],
-                        correct: 3,
-                        feedback: "Analyzing all available options (scope reduction, resource addition, schedule compression techniques) and presenting recommendations allows stakeholders to make informed decisions."
-                    },
-                    {
-                        question: "During execution, a critical path activity is taking longer than estimated. What should the project manager do first?",
-                        options: ["Crash the schedule by adding resources", "Fast-track subsequent activities", "Analyze the impact on the overall project timeline", "Update the project schedule immediately"],
-                        correct: 2,
-                        feedback: "Analyzing the impact helps determine the severity of the delay and informs decisions about appropriate corrective actions."
-                    },
-                    {
-                        question: "A change request has been approved that will significantly alter the project scope. What is the next priority?",
-                        options: ["Begin implementing the change immediately", "Update all relevant project documents and baselines", "Inform the team about the upcoming changes", "Assess the change's impact on budget and schedule"],
-                        correct: 1,
-                        feedback: "Updating project documents and baselines ensures all project artifacts remain consistent and provide accurate guidance for future work."
-                    },
-                    {
-                        question: "Quality testing reveals multiple defects in a key deliverable just before a milestone review. What should the project manager do?",
-                        options: ["Proceed with the milestone review as scheduled", "Postpone the review until all defects are fixed", "Conduct root cause analysis to understand the quality issues", "Replace the testing team"],
-                        correct: 2,
-                        feedback: "Root cause analysis helps identify systemic issues that led to quality problems, enabling the team to implement effective corrective and preventive actions."
-                    }
-                ],
-                "III": [
-                    {
-                        question: "Market conditions have changed significantly since project initiation, potentially affecting the business value of deliverables. What should the project manager do?",
-                        options: ["Continue with the original plan", "Conduct a business case review with stakeholders", "Immediately stop the project", "Modify deliverables based on new conditions"],
-                        correct: 1,
-                        feedback: "Conducting a business case review with stakeholders ensures that the project continues to deliver value under changed market conditions."
-                    },
-                    {
-                        question: "New industry regulations will affect your project deliverables. The regulations take effect after your planned completion date. How should you proceed?",
-                        options: ["Complete the project as planned before regulations take effect", "Immediately incorporate the new regulatory requirements", "Assess the impact and develop a compliance strategy", "Request a project extension to address regulations"],
-                        correct: 2,
-                        feedback: "Assessing regulatory impact and developing a compliance strategy ensures the deliverables will remain viable and compliant when deployed."
-                    },
-                    {
-                        question: "The organization is undergoing a major restructure that may affect project sponsorship and funding. What should the project manager do?",
-                        options: ["Continue the project without changes", "Pause the project until the restructure is complete", "Engage with new leadership to confirm project alignment", "Accelerate project completion before changes take effect"],
-                        correct: 2,
-                        feedback: "Engaging with new leadership ensures continued project support and alignment with organizational priorities after restructuring."
-                    },
-                    {
-                        question: "Customer feedback indicates that a delivered feature provides limited business value despite meeting technical requirements. How should this be addressed?",
-                        options: ["Defend the technical implementation", "Gather additional customer requirements for future releases", "Analyze the gap between customer expectations and delivered value", "Remove the feature from the product"],
-                        correct: 2,
-                        feedback: "Analyzing the value gap helps understand why the feature didn't meet business expectations and informs improvements for future deliverables."
-                    },
-                    {
-                        question: "A competitor has launched a similar product that may reduce demand for your project's deliverables. What should the project manager recommend?",
-                        options: ["Accelerate project completion to beat the competition", "Cancel the project to avoid losses", "Analyze competitive positioning and adjust project value proposition", "Continue as planned without changes"],
-                        correct: 2,
-                        feedback: "Analyzing competitive positioning helps determine how to differentiate the project deliverables and maintain business value in the changed market landscape."
-                    }
-                ]
-            };
-
-            let questionIndex = 0;
-            
-            // Calculate questions per domain based on PMP weights
-            const peopleQuestions = Math.floor(count * 0.42); // 42%
-            const processQuestions = Math.floor(count * 0.50); // 50%
-            const businessQuestions = count - peopleQuestions - processQuestions; // Remaining 8%
-
-            const domainCounts = {
-                "I": peopleQuestions,
-                "II": processQuestions,
-                "III": businessQuestions
-            };
-
-            Object.keys(domainCounts).forEach(domainCode => {
-                const domain = domains.find(d => d.code === domainCode);
-                const questionCount = domainCounts[domainCode];
-                
-                for (let i = 0; i < questionCount; i++) {
-                    const taskIndex = i % domain.tasks.length;
-                    const task = domain.tasks[taskIndex];
-                    const templateIndex = i % questionTemplates[domainCode].length;
-                    const template = questionTemplates[domainCode][templateIndex];
-
-                    demoQuestions.push({
-                        id: `${version.toLowerCase()}_${domainCode.toLowerCase()}_${i + 1}`,
-                        domain: task,
-                        domainName: domain.name,
-                        question: `${template.question} (Version ${version})`,
-                        options: template.options,
-                        correct: template.correct,
-                        feedback: template.feedback
-                    });
-                }
-            });
-
-            return demoQuestions;
-        }
-
-        // Generate the full question sets
-        // This initialization happens immediately when the script loads
-        console.log("Initializing test questions...");
-        console.log("Test 1 questions:", testQuestions[1].length);
-        console.log("Test 2 questions:", testQuestions[2].length);
-        console.log("Test 3 questions:", testQuestions[3].length);162,000 (given). SPI = EV/PV = $115,500/$147,000 = 0.785 or 0.79, CPI = EV/AC = $115,500/$162,000 = 0.71"
+                    feedback: "EV = Actual% * BAC = 0.55*$210,000 = $115,500, PV = Plan% * BAC = 0.70*$210,000 = $147,000, AC = $162,000 (given). SPI = EV/PV = $115,500/$147,000 = 0.785 or 0.79, CPI = EV/AC = $115,500/$162,000 = 0.71"
                 },
                 {
                     id: "A00092",
@@ -1637,19 +963,8 @@
             localStorage.setItem('pmp_test_progress', JSON.stringify(data));
         }
 
-        // Start test function
+        // Start test
         function startTest(testNumber) {
-            console.log("startTest function called with:", testNumber);
-            
-            // Validate test number and questions exist
-            if (!testQuestions[testNumber] || testQuestions[testNumber].length === 0) {
-                console.error("Test questions not found for test", testNumber);
-                alert("Test questions are not loaded properly. Please refresh the page and try again.");
-                return;
-            }
-            
-            console.log("Starting test", testNumber, "with", testQuestions[testNumber].length, "questions");
-            
             currentTest = testNumber;
             currentQuestionIndex = 0;
             userAnswers = {};
@@ -1657,28 +972,17 @@
             timeRemaining = 230 * 60;
             testCompleted = false;
 
-            // Hide test selection and show test interface
-            const testSelection = document.getElementById('testSelection');
-            const testInterface = document.getElementById('testInterface');
+            document.getElementById('testSelection').style.display = 'none';
+            document.getElementById('testInterface').style.display = 'block';
             
-            console.log("Hiding test selection, showing test interface");
-            testSelection.style.display = 'none';
-            testInterface.style.display = 'block';
-            
-            // Show first question
             showQuestion();
             
-            // Start timer if enabled
             if (document.getElementById('timerEnabled').checked) {
                 startTimer();
             }
             
-            // Save progress
             saveProgress();
         }
-
-        // Make sure startTest is globally available
-        window.startTest = startTest;
 
         // Timer functions
         function startTimer() {
@@ -1712,21 +1016,8 @@
 
         // Show current question
         function showQuestion() {
-            console.log("Showing question", currentQuestionIndex + 1, "of test", currentTest);
-            
             const questions = testQuestions[currentTest];
-            if (!questions || questions.length === 0) {
-                alert("No questions available for this test.");
-                return;
-            }
-            
             const question = questions[currentQuestionIndex];
-            if (!question) {
-                console.error("Question not found at index", currentQuestionIndex);
-                return;
-            }
-            
-            console.log("Current question:", question);
             
             // Update progress info
             document.getElementById('questionProgress').textContent = 
@@ -2139,14 +1430,6 @@
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', () => {
-            console.log("DOM loaded, initializing application...");
-            
-            // Log test data structure
-            console.log("Available tests:", Object.keys(testQuestions));
-            Object.keys(testQuestions).forEach(testNum => {
-                console.log(`Test ${testNum}: ${testQuestions[testNum].length} questions`);
-            });
-            
             loadProgress();
         });
 
