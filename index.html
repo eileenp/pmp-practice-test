@@ -538,9 +538,9 @@
             <p>Choose from three different test versions, each with unique questions covering the same PMP concepts.</p>
             
             <div class="test-buttons">
-                <button class="test-btn" onclick="startTest(1)">Test Version A</button>
-                <button class="test-btn" onclick="startTest(2)">Test Version B</button>
-                <button class="test-btn" onclick="startTest(3)">Test Version C</button>
+                <button class="test-btn" onclick="startTest(1); console.log('Test A button clicked');">Test Version A</button>
+                <button class="test-btn" onclick="startTest(2); console.log('Test B button clicked');">Test Version B</button>
+                <button class="test-btn" onclick="startTest(3); console.log('Test C button clicked');">Test Version C</button>
             </div>
 
             <div class="options">
@@ -1063,8 +1063,11 @@
         }
 
         // Generate the full question sets
-        // (Note: In a real implementation, you would have 180 unique questions per test)
-        // This is a demonstration with a smaller set that gets extended162,000 (given). SPI = EV/PV = $115,500/$147,000 = 0.785 or 0.79, CPI = EV/AC = $115,500/$162,000 = 0.71"
+        // This initialization happens immediately when the script loads
+        console.log("Initializing test questions...");
+        console.log("Test 1 questions:", testQuestions[1].length);
+        console.log("Test 2 questions:", testQuestions[2].length);
+        console.log("Test 3 questions:", testQuestions[3].length);162,000 (given). SPI = EV/PV = $115,500/$147,000 = 0.785 or 0.79, CPI = EV/AC = $115,500/$162,000 = 0.71"
                 },
                 {
                     id: "A00092",
@@ -1198,12 +1201,22 @@
 
         // Start test
         function startTest(testNumber) {
+            console.log("Starting test", testNumber);
+            
+            // Validate test number and questions exist
+            if (!testQuestions[testNumber] || testQuestions[testNumber].length === 0) {
+                alert("Test questions are not loaded properly. Please refresh the page and try again.");
+                return;
+            }
+            
             currentTest = testNumber;
             currentQuestionIndex = 0;
             userAnswers = {};
             testStartTime = Date.now();
             timeRemaining = 230 * 60;
             testCompleted = false;
+
+            console.log("Test initialized with", testQuestions[testNumber].length, "questions");
 
             document.getElementById('testSelection').style.display = 'none';
             document.getElementById('testInterface').style.display = 'block';
@@ -1249,8 +1262,21 @@
 
         // Show current question
         function showQuestion() {
+            console.log("Showing question", currentQuestionIndex + 1, "of test", currentTest);
+            
             const questions = testQuestions[currentTest];
+            if (!questions || questions.length === 0) {
+                alert("No questions available for this test.");
+                return;
+            }
+            
             const question = questions[currentQuestionIndex];
+            if (!question) {
+                console.error("Question not found at index", currentQuestionIndex);
+                return;
+            }
+            
+            console.log("Current question:", question);
             
             // Update progress info
             document.getElementById('questionProgress').textContent = 
@@ -1663,6 +1689,14 @@
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', () => {
+            console.log("DOM loaded, initializing application...");
+            
+            // Log test data structure
+            console.log("Available tests:", Object.keys(testQuestions));
+            Object.keys(testQuestions).forEach(testNum => {
+                console.log(`Test ${testNum}: ${testQuestions[testNum].length} questions`);
+            });
+            
             loadProgress();
         });
 
