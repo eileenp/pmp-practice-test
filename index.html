@@ -683,35 +683,35 @@
         console.log("Script starting...");
         
         // Application state
-        let currentTest = 1;
-        let currentQuestionIndex = 0;
-        let userAnswers = {};
-        let testStartTime = null;
-        let timerInterval = null;
-        let timeRemaining = 230 * 60; // 230 minutes in seconds
-        let testCompleted = false;
+        var currentTest = 1;
+        var currentQuestionIndex = 0;
+        var userAnswers = {};
+        var testStartTime = null;
+        var timerInterval = null;
+        var timeRemaining = 230 * 60; // 230 minutes in seconds
+        var testCompleted = false;
 
         // Domain mappings
-        const domainInfo = {
+        var domainInfo = {
             'I': { name: 'People', weight: 0.42, questions: 76 },
             'II': { name: 'Process', weight: 0.50, questions: 90 },
             'III': { name: 'Business Environment', weight: 0.08, questions: 14 }
         };
 
-        // Generate additional demo questions to reach 180 total per test
+        // Generate demo questions function
         function generateDemoQuestions(version, count) {
             console.log("Generating " + count + " demo questions for version " + version);
-            const demoQuestions = [];
+            var demoQuestions = [];
             
             // Calculate questions per domain based on PMP weights
-            const peopleQuestions = Math.floor(count * 0.42); // 42%
-            const processQuestions = Math.floor(count * 0.50); // 50%
-            const businessQuestions = count - peopleQuestions - processQuestions; // Remaining 8%
+            var peopleQuestions = Math.floor(count * 0.42); // 42%
+            var processQuestions = Math.floor(count * 0.50); // 50%
+            var businessQuestions = count - peopleQuestions - processQuestions; // Remaining 8%
 
             console.log("People: " + peopleQuestions + ", Process: " + processQuestions + ", Business: " + businessQuestions);
 
             // Sample question template
-            const baseQuestion = {
+            var baseQuestion = {
                 question: "A project manager faces a challenging situation that requires careful consideration of stakeholder needs and project objectives. What is the most appropriate approach?",
                 options: [
                     "Analyze the situation and engage stakeholders in finding a solution",
@@ -724,39 +724,39 @@
             };
 
             // Generate People domain questions
-            for (let i = 0; i < peopleQuestions; i++) {
+            for (var i = 0; i < peopleQuestions; i++) {
                 demoQuestions.push({
                     id: version.toLowerCase() + "_people_" + (i + 1),
                     domain: "I." + ((i % 14) + 1),
                     domainName: "People",
                     question: baseQuestion.question + " (People Domain - Question " + (i + 1) + ")",
-                    options: baseQuestion.options,
+                    options: baseQuestion.options.slice(),
                     correct: baseQuestion.correct,
                     feedback: baseQuestion.feedback
                 });
             }
 
             // Generate Process domain questions
-            for (let i = 0; i < processQuestions; i++) {
+            for (var j = 0; j < processQuestions; j++) {
                 demoQuestions.push({
-                    id: version.toLowerCase() + "_process_" + (i + 1),
-                    domain: "II." + ((i % 17) + 1),
+                    id: version.toLowerCase() + "_process_" + (j + 1),
+                    domain: "II." + ((j % 17) + 1),
                     domainName: "Process",
-                    question: baseQuestion.question + " (Process Domain - Question " + (i + 1) + ")",
-                    options: baseQuestion.options,
+                    question: baseQuestion.question + " (Process Domain - Question " + (j + 1) + ")",
+                    options: baseQuestion.options.slice(),
                     correct: baseQuestion.correct,
                     feedback: baseQuestion.feedback
                 });
             }
 
             // Generate Business Environment domain questions
-            for (let i = 0; i < businessQuestions; i++) {
+            for (var k = 0; k < businessQuestions; k++) {
                 demoQuestions.push({
-                    id: version.toLowerCase() + "_business_" + (i + 1),
-                    domain: "III." + ((i % 4) + 1),
+                    id: version.toLowerCase() + "_business_" + (k + 1),
+                    domain: "III." + ((k % 4) + 1),
                     domainName: "Business Environment",
-                    question: baseQuestion.question + " (Business Environment - Question " + (i + 1) + ")",
-                    options: baseQuestion.options,
+                    question: baseQuestion.question + " (Business Environment - Question " + (k + 1) + ")",
+                    options: baseQuestion.options.slice(),
                     correct: baseQuestion.correct,
                     feedback: baseQuestion.feedback
                 });
@@ -767,7 +767,183 @@
         }
 
         // Test data structure - original questions rewritten to avoid copyright
-        const testQuestions = {
+        var testQuestions = {
+            1: [ // Test Version A
+                {
+                    id: "people_001",
+                    domain: "I.6",
+                    domainName: "People",
+                    question: "A project manager takes over a team where members frequently disagree on technical approaches and show little respect for each other's contributions. After implementing new leadership practices, the team begins communicating better and establishing collaborative procedures. What team development stage has the team reached?",
+                    options: ["Forming", "Storming", "Norming", "Performing"],
+                    correct: 2,
+                    feedback: "The norming stage is characterized by team members developing mutual respect, establishing working procedures, and beginning to collaborate effectively. This follows the initial forming and storming phases."
+                },
+                {
+                    id: "people_002",
+                    domain: "I.6",
+                    domainName: "People",
+                    question: "Three interdependent project teams are working on separate components that must integrate seamlessly. The team lead is concerned about potential integration conflicts. What should the project manager recommend?",
+                    options: [
+                        "Establish regular coordination meetings between all three teams to proactively identify and address potential conflicts",
+                        "Prioritize one team's work and delay the others to eliminate any possibility of conflicts",
+                        "Wait for conflicts to emerge and document them as they occur for future resolution",
+                        "Allow all teams to continue independently and address integration issues during final testing"
+                    ],
+                    correct: 0,
+                    feedback: "Proactive communication and coordination between interdependent teams is essential for identifying potential conflicts early and maintaining project integration. Regular cross-team meetings facilitate this coordination."
+                },
+                {
+                    id: "process_001",
+                    domain: "II.5",
+                    domainName: "Process",
+                    question: "A project with a $150,000 budget should be 80% complete but is only 60% complete. The actual cost spent is $95,000. Calculate the Schedule Performance Index (SPI) and Cost Performance Index (CPI).",
+                    options: [
+                        "SPI = 0.75, CPI = 0.95",
+                        "SPI = 1.33, CPI = 1.05",
+                        "SPI = 0.80, CPI = 1.20",
+                        "SPI = 0.90, CPI = 0.85"
+                    ],
+                    correct: 0,
+                    feedback: "Earned Value = 60% × $150,000 = $90,000. Planned Value = 80% × $150,000 = $120,000. SPI = EV/PV = $90,000/$120,000 = 0.75. CPI = EV/AC = $90,000/$95,000 = 0.95. Values less than 1.0 indicate behind schedule and over budget."
+                },
+                {
+                    id: "business_001",
+                    domain: "III.1",
+                    domainName: "Business Environment",
+                    question: "New regulatory requirements are expected to be enacted within 4 months that will affect your product. Your project will complete in 2 months, but the product may not comply with the new regulations. How should you proceed?",
+                    options: [
+                        "Meet with stakeholders to assess risks, update assumptions, and potentially revise the project charter based on regulatory impact",
+                        "Continue with the current plan and address compliance after the regulations are finalized",
+                        "Complete the project quickly to avoid being subject to the new regulations",
+                        "Postpone the project until the new regulations are clearly defined"
+                    ],
+                    correct: 0,
+                    feedback: "Regulatory changes represent significant project risks that require immediate stakeholder consultation, risk assessment, and potential scope or timeline adjustments to ensure compliance."
+                }
+            ],
+            2: [ // Test Version B
+                {
+                    id: "people_006",
+                    domain: "I.6",
+                    domainName: "People",
+                    question: "During project initiation, team members are getting acquainted, expressing enthusiasm about the project, but haven't received detailed project information yet. What team development stage is this?",
+                    options: ["Storming", "Norming", "Forming", "Performing"],
+                    correct: 2,
+                    feedback: "The forming stage occurs when team members first meet and learn about the project. Members are typically polite, positive, and focused on understanding their roles and the project objectives."
+                },
+                {
+                    id: "people_007", 
+                    domain: "I.6",
+                    domainName: "People",
+                    question: "Multiple project teams are developing highly interdependent components. The team lead wants to prevent integration conflicts. What guidance should the project manager provide?",
+                    options: [
+                        "Schedule weekly coordination meetings to monitor progress and identify potential conflicts early",
+                        "Sequence the teams' work to eliminate dependencies and potential conflicts",
+                        "Create a conflict log to document issues as they arise during development",
+                        "Plan to resolve all conflicts during the integration and testing phase"
+                    ],
+                    correct: 0,
+                    feedback: "Early identification and prevention of conflicts through regular coordination is more effective than reactive conflict resolution. Proactive monitoring enables teams to adjust their work before conflicts become critical issues."
+                },
+                {
+                    id: "process_004",
+                    domain: "II.5",
+                    domainName: "Process",
+                    question: "A project with a $200,000 budget should be 75% complete but shows only 65% completion. Actual costs are $140,000. What are the SPI and CPI values?",
+                    options: [
+                        "SPI = 0.87, CPI = 0.93",
+                        "SPI = 1.15, CPI = 1.07",
+                        "SPI = 0.93, CPI = 0.87",
+                        "SPI = 1.07, CPI = 1.15"
+                    ],
+                    correct: 0,
+                    feedback: "Earned Value = 65% × $200,000 = $130,000. Planned Value = 75% × $200,000 = $150,000. SPI = $130,000/$150,000 = 0.87. CPI = $130,000/$140,000 = 0.93. Both values below 1.0 indicate schedule delays and cost overruns."
+                },
+                {
+                    id: "business_003",
+                    domain: "III.1",
+                    domainName: "Business Environment",
+                    question: "Shortly after project charter approval, the team learns of new international compliance requirements that may affect the project's business case. What should the project manager do first?",
+                    options: [
+                        "Research the requirements thoroughly and provide recommendations to the sponsor",
+                        "Update the quality management plan to address compliance requirements",
+                        "Continue as planned since the requirement wasn't in the original scope",
+                        "Add the requirement to the risk register and seek stakeholder guidance"
+                    ],
+                    correct: 0,
+                    feedback: "The project manager should research and understand the compliance requirements and their potential impact before recommending appropriate actions to the sponsor and stakeholders."
+                }
+            ],
+            3: [ // Test Version C
+                {
+                    id: "people_008",
+                    domain: "I.10",
+                    domainName: "People",
+                    question: "A newly formed project team includes both employees and contractors. During the kickoff meeting, team members argue about project goals and detailed requirements. What action will help build shared understanding?",
+                    options: [
+                        "Separate team members by expertise and assign specific work areas",
+                        "Establish a hierarchical structure with clear authority levels",
+                        "Have the product owner facilitate discussions and clarify project objectives",
+                        "Pair employees with contractors for better knowledge transfer"
+                    ],
+                    correct: 2,
+                    feedback: "When teams are in the storming phase with disagreements, having the product owner provide clarity on objectives and facilitate collaborative discussions helps the team move toward shared understanding and common goals."
+                },
+                {
+                    id: "people_009",
+                    domain: "I.6",
+                    domainName: "People",
+                    question: "A senior stakeholder bypasses the product owner and directly assigns urgent work to the agile team. During sprint reviews, the product owner becomes upset about this unauthorized work. How should the team address this?",
+                    options: [
+                        "Escalate to prevent the stakeholder from interfering with the team",
+                        "Establish a working agreement between the stakeholder and product owner for handling urgent requests",
+                        "Require the stakeholder to submit formal change requests for new work",
+                        "Allow the stakeholder to add items directly to the product backlog"
+                    ],
+                    correct: 1,
+                    feedback: "Creating a working agreement between the stakeholder and product owner establishes clear processes for handling urgent requests while maintaining proper agile governance and team focus."
+                },
+                {
+                    id: "process_005",
+                    domain: "II.5",
+                    domainName: "Process",
+                    question: "A project with a $180,000 budget should be 85% complete but is only 70% complete. Actual expenditure is $135,000. Calculate the SPI and CPI.",
+                    options: [
+                        "SPI = 0.82, CPI = 0.93",
+                        "SPI = 1.21, CPI = 1.07",
+                        "SPI = 0.93, CPI = 0.82",
+                        "SPI = 1.07, CPI = 1.21"
+                    ],
+                    correct: 0,
+                    feedback: "Earned Value = 70% × $180,000 = $126,000. Planned Value = 85% × $180,000 = $153,000. SPI = $126,000/$153,000 = 0.82. CPI = $126,000/$135,000 = 0.93. Both indices below 1.0 indicate performance issues."
+                },
+                {
+                    id: "business_004",
+                    domain: "III.1",
+                    domainName: "Business Environment",
+                    question: "The legal team discovers that a competitor holds a patent for technology used in your nearly-complete product. What should the product owner do to determine the best path forward?",
+                    options: [
+                        "Research markets where the patent doesn't apply",
+                        "Conduct economic analysis to identify minimum viable features for release",
+                        "Immediately terminate the project to minimize losses",
+                        "Continue development after removing the patented technology"
+                    ],
+                    correct: 1,
+                    feedback: "When fundamental assumptions about product viability are challenged, economic analysis helps determine if there's still a viable path forward and what minimum features could still provide value while avoiding patent issues."
+                }
+            ]
+        };
+
+        // Add generated questions to reach 180 total
+        console.log("Adding generated questions to test versions...");
+        testQuestions[1] = testQuestions[1].concat(generateDemoQuestions("A", 176));
+        testQuestions[2] = testQuestions[2].concat(generateDemoQuestions("B", 176));
+        testQuestions[3] = testQuestions[3].concat(generateDemoQuestions("C", 176));
+
+        console.log("Final test question counts:");
+        console.log("Test 1: " + testQuestions[1].length);
+        console.log("Test 2: " + testQuestions[2].length);
+        console.log("Test 3: " + testQuestions[3].length);
             1: [ // Test Version A
                 {
                     id: "people_001",
