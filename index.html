@@ -698,9 +698,9 @@
             'III': { name: 'Business Environment', weight: 0.08, questions: 14 }
         };
 
-        // Generate demo questions function (moved before testQuestions definition)
+        // Generate additional demo questions to reach 180 total per test
         function generateDemoQuestions(version, count) {
-            console.log(`Generating ${count} demo questions for version ${version}`);
+            console.log("Generating " + count + " demo questions for version " + version);
             const demoQuestions = [];
             
             // Calculate questions per domain based on PMP weights
@@ -708,7 +708,7 @@
             const processQuestions = Math.floor(count * 0.50); // 50%
             const businessQuestions = count - peopleQuestions - processQuestions; // Remaining 8%
 
-            console.log(`People: ${peopleQuestions}, Process: ${processQuestions}, Business: ${businessQuestions}`);
+            console.log("People: " + peopleQuestions + ", Process: " + processQuestions + ", Business: " + businessQuestions);
 
             // Sample question template
             const baseQuestion = {
@@ -726,10 +726,10 @@
             // Generate People domain questions
             for (let i = 0; i < peopleQuestions; i++) {
                 demoQuestions.push({
-                    id: `${version.toLowerCase()}_people_${i + 1}`,
-                    domain: `I.${(i % 14) + 1}`,
+                    id: version.toLowerCase() + "_people_" + (i + 1),
+                    domain: "I." + ((i % 14) + 1),
                     domainName: "People",
-                    question: `${baseQuestion.question} (People Domain - Question ${i + 1})`,
+                    question: baseQuestion.question + " (People Domain - Question " + (i + 1) + ")",
                     options: baseQuestion.options,
                     correct: baseQuestion.correct,
                     feedback: baseQuestion.feedback
@@ -739,10 +739,10 @@
             // Generate Process domain questions
             for (let i = 0; i < processQuestions; i++) {
                 demoQuestions.push({
-                    id: `${version.toLowerCase()}_process_${i + 1}`,
-                    domain: `II.${(i % 17) + 1}`,
+                    id: version.toLowerCase() + "_process_" + (i + 1),
+                    domain: "II." + ((i % 17) + 1),
                     domainName: "Process",
-                    question: `${baseQuestion.question} (Process Domain - Question ${i + 1})`,
+                    question: baseQuestion.question + " (Process Domain - Question " + (i + 1) + ")",
                     options: baseQuestion.options,
                     correct: baseQuestion.correct,
                     feedback: baseQuestion.feedback
@@ -752,17 +752,17 @@
             // Generate Business Environment domain questions
             for (let i = 0; i < businessQuestions; i++) {
                 demoQuestions.push({
-                    id: `${version.toLowerCase()}_business_${i + 1}`,
-                    domain: `III.${(i % 4) + 1}`,
+                    id: version.toLowerCase() + "_business_" + (i + 1),
+                    domain: "III." + ((i % 4) + 1),
                     domainName: "Business Environment",
-                    question: `${baseQuestion.question} (Business Environment - Question ${i + 1})`,
+                    question: baseQuestion.question + " (Business Environment - Question " + (i + 1) + ")",
                     options: baseQuestion.options,
                     correct: baseQuestion.correct,
                     feedback: baseQuestion.feedback
                 });
             }
 
-            console.log(`Generated ${demoQuestions.length} questions for version ${version}`);
+            console.log("Generated " + demoQuestions.length + " questions for version " + version);
             return demoQuestions;
         }
 
