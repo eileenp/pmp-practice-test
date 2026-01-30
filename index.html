@@ -1056,14 +1056,14 @@
             clearFeedback();
             resetOptionClasses();
 
-            if (selectedIndex !== null) {
-                applySelectedClass(selectedIndex);
+            if (selectedIndex == null) {
+                return;
             }
 
+            applySelectedClass(selectedIndex);
+
             if (isSubmitted) {
-                if (selectedIndex !== null) {
-                    showFeedback(question, selectedIndex);
-                }
+                showFeedback(question, selectedIndex);
                 return;
             }
 
