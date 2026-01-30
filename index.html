@@ -879,6 +879,7 @@
             answers: [],
             submitted: [],
             timerEnabled: true,
+            immediateFeedbackEnabled: true,
             timerRemainingSeconds: DEFAULT_TIMER_SECONDS,
             timerInterval: null
         };
@@ -995,6 +996,7 @@
             state.answers = new Array(state.questions.length).fill(null);
             state.submitted = new Array(state.questions.length).fill(false);
             state.timerEnabled = document.getElementById("timerEnabled").checked;
+            state.immediateFeedbackEnabled = document.getElementById("immediateSubmitFeedback").checked;
 
             document.getElementById("testSelection").style.display = "none";
             document.getElementById("results").classList.remove("show");
@@ -1049,8 +1051,9 @@
         function updateAnswerUI() {
             const question = state.questions[state.currentIndex];
             const selectedIndex = state.answers[state.currentIndex];
-            const immediateFeedbackEnabled = document.getElementById("immediateSubmitFeedback").checked;
+            const immediateFeedbackEnabled = state.immediateFeedbackEnabled;
             const isSubmitted = state.submitted[state.currentIndex];
+            const isIncorrect = selectedIndex !== null && selectedIndex !== question.correct;
 
             clearFeedback();
             resetOptionClasses();
@@ -1060,11 +1063,13 @@
             }
 
             if (isSubmitted) {
-                showFeedback(question, selectedIndex);
+                if (selectedIndex !== null) {
+                    showFeedback(question, selectedIndex);
+                }
                 return;
             }
 
-            if (immediateFeedbackEnabled && selectedIndex !== null && selectedIndex !== question.correct) {
+            if (immediateFeedbackEnabled && isIncorrect) {
                 showFeedback(question, selectedIndex);
             }
         }
