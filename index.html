@@ -680,841 +680,608 @@
     </div>
 
     <script>
-        // Test data structure - simplified for demonstration
+        // Test data structure - rephrased questions to avoid copyright issues
         const testQuestions = {
             1: [ // Test Version A
                 {
-                    id: "840664",
+                    id: "people_team_dev_001",
                     domain: "I.6",
                     domainName: "People",
-                    question: "A project manager joins a project team, replacing a manager who left. During initial meetings, the project manager realized that the team members have differing opinions about how to address technical decisions. Team members did NOT respect each other's ideas, and the environment was becoming counterproductive. However, now with the new manager's leadership, the team has begun to communicate more effectively and develop some processes and procedures for working together. In what phase of development is the team now?",
+                    question: "A new project manager takes over a team experiencing interpersonal conflicts and lack of mutual respect among members. Under the new leadership, team members start communicating better and establishing collaborative work procedures. What team development stage are they currently in?",
                     options: ["Forming", "Storming", "Norming", "Performing"],
                     correct: 2,
-                    feedback: "During the norming phase, team members begin to work together and adjust their work habits and behaviors to support the team. The team members learn to trust each other."
+                    feedback: "The norming stage is when team members develop mutual respect, establish working procedures, and begin collaborating effectively. They learn to trust each other and work together."
                 },
                 {
-                    id: "840679",
+                    id: "people_coordination_001",
                     domain: "I.6",
                     domainName: "People",
-                    question: "A project is comprised of three highly dependent parts, each being completed by its own project team. The team leader, worried that conflicts might arise when the outputs from the three teams are combined, asks for advice. What advice should the project manager provide?",
+                    question: "A project involves three interconnected teams developing separate but highly dependent components. The team leader is concerned about potential integration conflicts when combining outputs. What should the project manager recommend?",
                     options: [
-                        "Identify potential conflicts and then arrange for a weekly joint meeting with the members of the three teams to review each other's work.",
-                        "Decide which team's work should be prioritized, then delay the work from the other two teams to ensure there are NO conflicts.",
-                        "Document conflicts as they occur and take action to remedy any problems that arise.",
-                        "Continue to let all three teams work simultaneously, recognizing that conflicts can be addressed at the testing phase."
+                        "Set up regular coordination meetings between all teams to proactively identify and manage potential conflicts",
+                        "Prioritize one team's deliverables and delay the others to prevent any conflicts from occurring",
+                        "Let conflicts emerge naturally and document them for resolution as they happen",
+                        "Allow teams to work independently and address integration issues during final testing"
                     ],
                     correct: 0,
-                    feedback: "Consistent communication is important for ensuring a lower probability of issues and successfully addressing existing risks."
+                    feedback: "Proactive communication and coordination between interdependent teams is essential for early conflict identification and successful project integration. Regular meetings facilitate this coordination."
                 },
                 {
-                    id: "840649",
+                    id: "process_evm_001",
                     domain: "II.5",
                     domainName: "Process",
-                    question: "A project that should have been 90% complete by now is only 65% complete. The total project budget is US$120,000 and the actual cost spent to date (AC) is US$80,000. What is the scheduled performance index (SPI) and cost performance index (CPI) of this project?",
+                    question: "A project with a $120,000 budget should be 90% complete but is only 65% complete. The actual cost spent to date is $80,000. What are the Schedule Performance Index (SPI) and Cost Performance Index (CPI)?",
                     options: [
-                        "The SPI is 0.72, and the CPI is 0.98.",
-                        "The SPI is 1.38, and the CPI is 1.2.",
-                        "The SPI is 0.94, and the CPI is 1.04.",
-                        "The SPI is 0.80, and the CPI is 0.91."
+                        "SPI = 0.72, CPI = 0.98",
+                        "SPI = 1.38, CPI = 1.20",
+                        "SPI = 0.94, CPI = 1.04",
+                        "SPI = 0.80, CPI = 0.91"
                     ],
                     correct: 0,
-                    feedback: "EV = % complete * budget: 65% * $120,000 = $78,000, AC = $80,000. CPI = EV/AC = $78,000/80,000 = 0.975 or 0.98. A CPI less than 1 means the project is over budget. PV = % complete * budget: 90% * $120,000 = $108,000, SPI = EV/PV = $78,000/108,000 = 0.72. An SPI less than 1 means the project is behind schedule."
+                    feedback: "Earned Value = 65% × $120,000 = $78,000. Planned Value = 90% × $120,000 = $108,000. SPI = EV/PV = $78,000/$108,000 = 0.72. CPI = EV/AC = $78,000/$80,000 = 0.98. Both values below 1.0 indicate behind schedule and over budget."
                 },
                 {
-                    id: "840697",
+                    id: "business_compliance_001",
                     domain: "III.1",
                     domainName: "Business Environment",
-                    question: "A new law is expected within the next 6 months that will affect a business' product line. The next product is launching and should be completed within 3 months. Unfortunately, the new product will NOT meet the requirements of the proposed law. How should the project manager respond to this potential problem?",
+                    question: "New regulatory requirements are expected in 6 months that will affect your product line. Your current project will complete in 3 months, but the product may not comply with the future regulations. How should you proceed?",
                     options: [
-                        "Schedule a meeting with the sponsor and key stakeholders to discuss risks. Then, using the results of the meeting, revise the assumption log and project charter.",
-                        "Revise the risk management plan. Then, move ahead with planning the project.",
-                        "Move ahead with the project, following the plan. Then ensure on-time completion, so that the product will NOT be affected by any possible rule change.",
-                        "Schedule a meeting with the sponsor and key stakeholders to warn them about the law. Then advise them to cancel the project until the legislation is finalized."
+                        "Meet with stakeholders to assess risks, update assumptions, and potentially revise the project charter",
+                        "Update the risk management plan and continue with current project planning",
+                        "Complete the project quickly to avoid being subject to the new regulations",
+                        "Recommend postponing the project until the new regulations are finalized"
                     ],
                     correct: 0,
-                    feedback: "This new law can have a profound effect on the project. It will certainly lead to new potential risks, new assumptions, and a possible charter change."
+                    feedback: "Regulatory changes represent significant project risks requiring immediate stakeholder consultation, risk assessment, and potential adjustments to scope or timeline to ensure compliance."
                 }
-                // Add more questions here to reach 180 total
+                // Additional questions will be generated
             ],
             2: [ // Test Version B - Different questions testing same concepts
                 {
-                    id: "X00003",
+                    id: "people_team_dev_002",
                     domain: "I.6",
                     domainName: "People",
-                    question: "A project manager has assembled a project team. During initial meetings, the project manager observes that team members are getting to know each other, feeling excited and positive about the project, and have NOT been told the specific details of the project. In what phase of development is the team?",
+                    question: "During project initiation, team members are getting acquainted and expressing enthusiasm, but they haven't received detailed project information yet. What team development stage is this?",
                     options: ["Storming", "Norming", "Forming", "Performing"],
                     correct: 2,
-                    feedback: "The Forming phase is when the team members meet and learn about the project and their formal roles and responsibilities. Team members tend to be solitary and independent in this phase."
+                    feedback: "The forming stage occurs when team members first meet and learn about the project. Members are typically polite, positive, and focused on understanding their roles and objectives."
                 },
                 {
-                    id: "844765",
-                    domain: "I.6", 
+                    id: "people_coordination_002",
+                    domain: "I.6",
                     domainName: "People",
-                    question: "Three project teams are working on parts of a single project. The parts are highly dependent on each other. The leader of the team indicates that this might create conflicts when the outputs from the three teams are combined. What guidance should the project manager offer to the team lead?",
+                    question: "Multiple teams are developing highly interdependent components. The team lead wants to prevent integration conflicts. What guidance should the project manager provide?",
                     options: [
-                        "Identify potential conflicts and arrange for a weekly joint meeting with the members of the three teams to monitor each other's work.",
-                        "Decide which team's work should be prioritized, then delay the work from the other two teams to ensure there are NO conflicts.",
-                        "Document conflicts as they occur and take action to remedy any problems that arise.",
-                        "Tell all three teams to continue to work simultaneously, recognizing that conflicts can be addressed at the testing phase."
+                        "Schedule weekly coordination meetings to monitor progress and identify potential conflicts early",
+                        "Sequence the teams' work to eliminate dependencies and potential conflicts",
+                        "Create a conflict log to document issues as they arise during development",
+                        "Plan to resolve all conflicts during the integration and testing phase"
                     ],
                     correct: 0,
-                    feedback: "Before deciding to act, the project manager needs to determine the potential conflicts and monitor progress."
+                    feedback: "Early identification and prevention of conflicts through regular coordination is more effective than reactive conflict resolution. Proactive monitoring enables teams to adjust work before conflicts become critical."
                 },
                 {
-                    id: "844455",
+                    id: "process_evm_002",
                     domain: "II.5",
-                    domainName: "Process", 
-                    question: "A project that should have been 90% complete by now is only 84% complete. The total project budget is US$110,000 and the actual cost to date is US$82,000. What is the schedule performance index (SPI) and cost performance index (CPI) for this project?",
+                    domainName: "Process",
+                    question: "A project with a $110,000 budget should be 90% complete but is only 84% complete. The actual cost to date is $82,000. What are the SPI and CPI?",
                     options: [
-                        "The SPI is 0.93, and the CPI is 1.13.",
-                        "The SPI is 1.07, and the CPI is 0.99.",
-                        "The SPI is 1.15, and the CPI of 0.93.",
-                        "The SPI is 0.96, and the CPI is 1.18."
+                        "SPI = 0.93, CPI = 1.13",
+                        "SPI = 1.07, CPI = 0.99",
+                        "SPI = 1.15, CPI = 0.93",
+                        "SPI = 0.96, CPI = 1.18"
                     ],
                     correct: 0,
-                    feedback: "EV = Actual% * BAC = 0.84*$110,000 = $92,400, PV = Plan% * BAC = 0.90*$110,000 = $99,000, AC = $82,000 (given). SPI = EV/PV = $92,400/$99,000 = 0.93, CPI = EV/AC = $92,400/$82,000 = 1.126 or 1.13"
+                    feedback: "Earned Value = 84% × $110,000 = $92,400. Planned Value = 90% × $110,000 = $99,000. SPI = $92,400/$99,000 = 0.93. CPI = $92,400/$82,000 = 1.13. SPI below 1.0 indicates schedule delays."
                 },
                 {
-                    id: "840778",
+                    id: "business_compliance_002",
                     domain: "III.1",
                     domainName: "Business Environment",
-                    question: "A project team learns about a new compliance requirement from an international entity that may impact the baseline business case for the project. They learn this right after the project charter is completed and the project sponsor has signed. How should the project manager proceed?",
+                    question: "After project charter approval, the team learns of new international compliance requirements that may impact the business case. What should the project manager do first?",
                     options: [
-                        "Research the requirement and possible consequences, then give the sponsor a recommendation.",
-                        "Address the requirement through the creation of a quality management plan.",
-                        "Ignore the issue, as the new requirement is NOT part of the project's documented scope.",
-                        "Ensure that the requirement is documented in the risk register, then ask for further guidance from all stakeholders."
+                        "Research the requirements thoroughly and provide recommendations to the sponsor",
+                        "Update the quality management plan to address compliance requirements",
+                        "Continue as planned since the requirement wasn't in the original scope",
+                        "Add the requirement to the risk register and seek stakeholder guidance"
                     ],
                     correct: 0,
-                    feedback: "The context of this scenario requires the project manager to influence the organization (sponsor) and recommend next steps after reviewing and understanding compliance requirements and consequences."
+                    feedback: "The project manager should research and understand compliance requirements and their potential impact before recommending appropriate actions to the sponsor and stakeholders."
                 }
-                // Add more questions here to reach 180 total
+                // Additional questions will be generated
             ],
             3: [ // Test Version C - Different questions testing same concepts
                 {
-                    id: "A00202",
+                    id: "people_shared_understanding_001",
                     domain: "I.10",
                     domainName: "People",
-                    question: "A newly assembled project team is holding a kickoff meeting over a weekend. About half of the project team already works together; the other team members are contractors. The company already uses lean and agile approaches. However, during the meeting, the team members openly argued about everything—from project goals to the smallest details. Which action will help the team to build a shared understanding?",
+                    question: "A newly formed team includes both employees and contractors. During the kickoff meeting, team members argue about project goals and requirements. What action will help build shared understanding?",
                     options: [
-                        "Create breakout sessions and assign team members to specific work based on their expertise.",
-                        "Nominate someone to the role of project manager and adopt a hierarchical team structure.",
-                        "Ask the product owner to lead the session and explain to the team what to do.",
-                        "The team lead should arrange the team and contractors in working pairs."
+                        "Separate team members by expertise and assign specific work areas",
+                        "Establish a hierarchical structure with clear authority levels",
+                        "Have the product owner facilitate discussions and clarify project objectives",
+                        "Pair employees with contractors for better knowledge transfer"
                     ],
                     correct: 2,
-                    feedback: "This team is in the storming phase, so arguments may be normal. However, they need to refocus and come together sooner rather than later. The team should collaborate, and at this stage the product owner is best qualified to offer some cohesion."
+                    feedback: "When teams are in the storming phase with disagreements, having the product owner provide clarity on objectives and facilitate collaborative discussions helps move toward shared understanding."
                 },
                 {
-                    id: "A00081",
+                    id: "people_stakeholder_management_001",
                     domain: "I.6",
                     domainName: "People",
-                    question: "An R&D executive, who is a project stakeholder, occasionally visits the agile team's work area to give instructions about urgent feature work. The team begins work. During sprint reviews, the product owner becomes upset that the team worked on the requested features. How should the team address the problem?",
+                    question: "A senior stakeholder bypasses the product owner and directly assigns urgent work to the agile team. The product owner becomes upset about this unauthorized work. How should the team address this?",
                     options: [
-                        "Escalate to ensure that the executive no longer interferes with the team.",
-                        "Meet with the executive and product owner to agree on a work flow.",
-                        "Require that the executive issues change requests for new items.",
-                        "Give the executive access to add new items to the backlog."
+                        "Escalate to prevent the stakeholder from interfering with the team",
+                        "Establish a working agreement between the stakeholder and product owner for handling urgent requests",
+                        "Require the stakeholder to submit formal change requests for new work",
+                        "Allow the stakeholder to add items directly to the product backlog"
                     ],
                     correct: 1,
-                    feedback: "In this case, the R&D executive stakeholder is bypassing the product owner and creating disruption. A working agreement between the executive and the product owner is needed to restore order."
+                    feedback: "Creating a working agreement between the stakeholder and product owner establishes clear processes for handling urgent requests while maintaining proper agile governance."
                 },
                 {
-                    id: "844452",
+                    id: "process_evm_003",
                     domain: "II.5",
                     domainName: "Process",
-                    question: "A project that should have been 70% complete by now is only 55% complete. The total project budget is US$210,000, and the actual cost spent to date is US$162,000. What is the scheduled performance index (SPI) and cost performance index (CPI) of this project?",
+                    question: "A project with a $210,000 budget should be 70% complete but is only 55% complete. The actual cost spent is $162,000. What are the SPI and CPI?",
                     options: [
-                        "The SPI is 0.79, and the CPI is 0.71.",
-                        "The SPI is 1.27, and the CPI is 0.98.",
-                        "The SPI is 0.82, and the CPI is 1.05.",
-                        "The SPI is 0.99, and the CPI is 0.96."
+                        "SPI = 0.79, CPI = 0.71",
+                        "SPI = 1.27, CPI = 0.98",
+                        "SPI = 0.82, CPI = 1.05",
+                        "SPI = 0.99, CPI = 0.96"
                     ],
                     correct: 0,
-                    feedback: "EV = Actual% * BAC = 0.55*$210,000 = $115,500, PV = Plan% * BAC = 0.70*$210,000 = $147,000, AC = $162,000 (given). SPI = EV/PV = $115,500/$147,000 = 0.785 or 0.79, CPI = EV/AC = $115,500/$162,000 = 0.71"
+                    feedback: "Earned Value = 55% × $210,000 = $115,500. Planned Value = 70% × $210,000 = $147,000. SPI = $115,500/$147,000 = 0.79. CPI = $115,500/$162,000 = 0.71. Both indices below 1.0 indicate performance issues."
                 },
                 {
-                    id: "A00092",
+                    id: "business_patent_issue_001",
                     domain: "III.1",
                     domainName: "Business Environment",
-                    question: "The legal team informs the product owner that another company owns a patent for an innovation used in the agile team's product, which is now 75% complete. What should the product owner do to determine the appropriate way forward?",
+                    question: "The legal team discovers a competitor holds a patent for technology used in your nearly-complete product. What should the product owner do to determine the best path forward?",
                     options: [
-                        "Work with the legal department to find markets where the patent is NOT registered.",
-                        "Perform marginal economics analysis and identify minimum releasable features.",
-                        "Terminate the project immediately to prevent any further sunken costs.",
-                        "Continue work on the product after removing the patented component."
+                        "Research markets where the patent doesn't apply",
+                        "Conduct economic analysis to identify minimum viable features for release",
+                        "Immediately terminate the project to minimize losses",
+                        "Continue development after removing the patented technology"
                     ],
                     correct: 1,
-                    feedback: "A foundational assumption to release the product has become a 'show-stopper'. Marginal economic analysis determines if there is a viable way forward. Identifying minimal releasable features can mitigate the economic loss."
+                    feedback: "When fundamental assumptions about product viability are challenged, economic analysis helps determine if there's a viable path forward and what minimum features could provide value while avoiding patent issues."
                 }
-                // Add more questions here to reach 180 total
+                // Additional questions will be generated
             ]
         };
 
         // Generate additional questions for each test to reach 180 total
         function generateAdditionalQuestions() {
-            // This would include all 269 questions distributed across the three tests
-            // For demonstration, we'll use a simplified version
+            // Sample question templates for different domains - all original content
             const additionalQuestions = [
-                // People domain questions
+                // People domain questions (42% - approximately 76 questions)
                 {
-                    id: "sample_people_1",
-                    domain: "I.12",
+                    id: "people_leadership_001",
+                    domain: "I.2",
                     domainName: "People",
-                    question: "A project manager needs stakeholder involvement in order to identify strategic and operational assumptions and constraints. Unfortunately, the project manager is having difficulty obtaining consistent input due to lack of participation. In which two ways can the project manager encourage the stakeholder to participate and collaborate? (Choose TWO.)",
-                    options: ["Use political awareness techniques", "Be a servant leader", "Timebox meetings", "Use effective facilitation techniques"],
-                    correct: [3, 1], // Multiple correct answers
-                    multiSelect: true,
-                    feedback: "Facilitation is the ability to effectively guide a group event to a successful decision, solution, or conclusion. Being a servant leader also helps encourage participation."
-                },
-                // Process domain questions  
+                    question: "A team member is struggling with new technology required for the project. What is the most appropriate leadership approach?",
+                    options: ["Provide targeted training and mentoring support", "Reassign the team member to different tasks", "Hire an external consultant", "Document the skill gap as a project risk"],
+                    correct: 0,
+                    feedback: "Provide targeted training and mentoring support builds confidence and capability without disrupting team cohesion."
+                }
+            ];
+            return additionalQuestions;
+        }
+
+        const TOTAL_QUESTIONS = 180;
+        const DEFAULT_TIMER_SECONDS = 230 * 60;
+
+        const state = {
+            currentVersion: null,
+            questions: [],
+            currentIndex: 0,
+            answers: [],
+            submitted: [],
+            timerEnabled: true,
+            timerRemainingSeconds: DEFAULT_TIMER_SECONDS,
+            timerInterval: null
+        };
+
+        function buildAdditionalQuestions(count, seedOffset = 0) {
+            const templates = [
                 {
-                    id: "sample_process_1",
-                    domain: "II.3",
-                    domainName: "Process",
-                    question: "A project sponsor is risk averse and is therefore concerned about negative impacts on the project. To help with this concern, the project team identifies four (4) project risks and then evaluates both the probability of occurrence and the impact of the risk if it occurs. The team uses a 1-5 scale (1 is the lowest and 5 is the highest). Based on the following data, in what order should the project manager rank these risks? Risk A: Probability 1, Impact 5; Risk B: Probability 4, Impact 4; Risk C: Probability 2, Impact 5; Risk D: Probability 2, Impact 2",
-                    options: ["B, A, D, C", "B, C, A, D", "B, A, C, D", "C, D, A, B"],
-                    correct: 1,
-                    feedback: "Risk severity is calculated by multiplying probability and impact. Risk B (4×4=16), Risk C (2×5=10), Risk A (1×5=5), Risk D (2×2=4). The higher the value, the higher the risk is rated."
-                },
-                // Business Environment questions
-                {
-                    id: "sample_business_1", 
-                    domain: "III.3",
-                    domainName: "Business Environment",
-                    question: "A company is losing market share to disruptive competitors with new business models. A cross-functional agile team has been formed to recommend ways to recover market share. How can the team increase their chance of producing successful recommendations?",
+                    id: "people_leadership",
+                    domain: "I.2",
+                    domainName: "People",
+                    question: "A team member is struggling with a required skill. What should the project manager do first?",
                     options: [
-                        "Gain a deep understanding of why customers are disappointed by the company's products.",
-                        "Focus on enabling profitable delivery of unique, high-quality, and innovative products.",
-                        "Understand how the competitors' business models can reach more consumers at a lower cost.",
-                        "Focus on understanding the value consumers seek and the value competitors offer."
+                        "Provide coaching and targeted training",
+                        "Reassign the team member immediately",
+                        "Reduce the scope to avoid the skill gap",
+                        "Escalate to the sponsor for a replacement"
                     ],
-                    correct: 3,
-                    feedback: "The first principle of the Agile Manifesto focuses on value: 'Our highest priority is to satisfy the customer through early and continuous delivery of valuable software.' Markets are driven by the value consumers attribute to the offerings."
+                    correct: 0,
+                    feedback: "Coaching and training address the root cause while maintaining team engagement and project continuity."
+                },
+                {
+                    id: "people_conflict",
+                    domain: "I.6",
+                    domainName: "People",
+                    question: "Two team members disagree on the best approach to a task. What is the most effective action?",
+                    options: [
+                        "Facilitate a collaborative discussion to reach consensus",
+                        "Choose the fastest approach and enforce it",
+                        "Escalate to functional managers immediately",
+                        "Separate the team members onto different tasks"
+                    ],
+                    correct: 0,
+                    feedback: "Facilitating collaboration addresses the conflict and helps the team align on a shared approach."
+                },
+                {
+                    id: "process_schedule",
+                    domain: "II.2",
+                    domainName: "Process",
+                    question: "The schedule is at risk due to new scope changes. What should the project manager do?",
+                    options: [
+                        "Evaluate impacts and update the schedule baseline",
+                        "Add resources without reassessing the plan",
+                        "Ignore the changes to protect the timeline",
+                        "Compress all remaining activities immediately"
+                    ],
+                    correct: 0,
+                    feedback: "Scope changes require impact assessment and formal updates to the schedule baseline."
+                },
+                {
+                    id: "process_change_control",
+                    domain: "II.8",
+                    domainName: "Process",
+                    question: "A stakeholder requests a new feature mid-project. What is the correct first step?",
+                    options: [
+                        "Submit the request through the change control process",
+                        "Add it to the backlog and start work",
+                        "Reject it because the plan is finalized",
+                        "Ask the sponsor to approve it informally"
+                    ],
+                    correct: 0,
+                    feedback: "Formal change control ensures impacts are assessed and approvals are documented."
+                },
+                {
+                    id: "business_compliance",
+                    domain: "III.1",
+                    domainName: "Business Environment",
+                    question: "New regulations may affect a deliverable. What should the project manager do?",
+                    options: [
+                        "Assess the impact and update risks and assumptions",
+                        "Continue as planned until regulations are final",
+                        "Stop the project to avoid compliance risk",
+                        "Defer the deliverable until after project close"
+                    ],
+                    correct: 0,
+                    feedback: "Regulatory changes require immediate impact assessment and updates to project documentation."
+                },
+                {
+                    id: "business_benefits",
+                    domain: "III.2",
+                    domainName: "Business Environment",
+                    question: "The business case assumptions change significantly. What should the project manager do?",
+                    options: [
+                        "Re-evaluate the business case with stakeholders",
+                        "Continue execution to avoid delays",
+                        "Reduce quality to protect cost",
+                        "Transfer ownership to operations"
+                    ],
+                    correct: 0,
+                    feedback: "When assumptions change, the business case should be re-evaluated to confirm continued viability."
                 }
             ];
 
-            // Distribute additional questions across the three tests to reach 180 each
-            for (let testNum = 1; testNum <= 3; testNum++) {
-                while (testQuestions[testNum].length < 180) {
-                    // Add variations of the additional questions
-                    additionalQuestions.forEach(question => {
-                        if (testQuestions[testNum].length < 180) {
-                            testQuestions[testNum].push({
-                                ...question,
-                                id: `${question.id}_v${testNum}_${testQuestions[testNum].length}`
-                            });
-                        }
-                    });
+            const generated = [];
+            for (let i = 0; i < count; i += 1) {
+                const template = templates[(i + seedOffset) % templates.length];
+                generated.push({
+                    ...template,
+                    id: `${template.id}_${i + 1 + seedOffset}`
+                });
+            }
+            return generated;
+        }
+
+        function buildQuestionSet(version) {
+            const base = testQuestions[version] ? [...testQuestions[version]] : [];
+            const needed = Math.max(0, TOTAL_QUESTIONS - base.length);
+            return base.concat(buildAdditionalQuestions(needed, version * 1000));
+        }
+
+        function startTest(version) {
+            state.currentVersion = version;
+            state.questions = buildQuestionSet(version);
+            state.currentIndex = 0;
+            state.answers = new Array(state.questions.length).fill(null);
+            state.submitted = new Array(state.questions.length).fill(false);
+            state.timerEnabled = document.getElementById("timerEnabled").checked;
+
+            document.getElementById("testSelection").style.display = "none";
+            document.getElementById("results").classList.remove("show");
+            document.getElementById("testInterface").style.display = "block";
+
+            if (state.timerEnabled) {
+                startTimer(DEFAULT_TIMER_SECONDS);
+            } else {
+                stopTimer();
+                updateTimerDisplay(DEFAULT_TIMER_SECONDS);
+            }
+
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const question = state.questions[state.currentIndex];
+            if (!question) {
+                return;
+            }
+
+            document.getElementById("questionTitle").textContent = `Question ${state.currentIndex + 1}`;
+            document.getElementById("questionProgress").textContent = `Question ${state.currentIndex + 1} of ${state.questions.length}`;
+            document.getElementById("domainInfo").textContent = `Domain ${question.domain}: ${question.domainName}`;
+            document.getElementById("questionText").textContent = question.question;
+
+            const optionsContainer = document.getElementById("optionsContainer");
+            optionsContainer.innerHTML = "";
+
+            question.options.forEach((option, index) => {
+                const optionItem = document.createElement("div");
+                optionItem.className = "option-item";
+                optionItem.dataset.index = index;
+                optionItem.innerHTML = `
+                    <span class="option-label">${String.fromCharCode(65 + index)}</span>
+                    <span>${option}</span>
+                `;
+                optionItem.addEventListener("click", () => handleOptionSelect(index));
+                optionsContainer.appendChild(optionItem);
+            });
+
+            updateAnswerUI();
+            updateNavigation();
+        }
+
+        function handleOptionSelect(index) {
+            state.answers[state.currentIndex] = index;
+            updateAnswerUI();
+            updateNavigation();
+        }
+
+        function updateAnswerUI() {
+            const question = state.questions[state.currentIndex];
+            const selectedIndex = state.answers[state.currentIndex];
+            const immediateFeedbackEnabled = document.getElementById("immediateSubmitFeedback").checked;
+            const isSubmitted = state.submitted[state.currentIndex];
+
+            clearFeedback();
+            resetOptionClasses();
+
+            if (selectedIndex !== null) {
+                applySelectedClass(selectedIndex);
+            }
+
+            if (isSubmitted) {
+                showFeedback(question, selectedIndex);
+                return;
+            }
+
+            if (immediateFeedbackEnabled && selectedIndex !== null && selectedIndex !== question.correct) {
+                showFeedback(question, selectedIndex);
+            }
+        }
+
+        function applySelectedClass(selectedIndex) {
+            const options = document.querySelectorAll(".option-item");
+            options.forEach((item, index) => {
+                if (index === selectedIndex) {
+                    item.classList.add("selected");
                 }
-            }
+            });
         }
 
-        // Generate the full question sets
-        generateAdditionalQuestions();
+        function resetOptionClasses() {
+            const options = document.querySelectorAll(".option-item");
+            options.forEach((item) => {
+                item.classList.remove("selected", "correct", "incorrect");
+            });
+        }
 
-        // Application state
-        let currentTest = 1;
-        let currentQuestionIndex = 0;
-        let userAnswers = {};
-        let testStartTime = null;
-        let timerInterval = null;
-        let timeRemaining = 230 * 60; // 230 minutes in seconds
-        let testCompleted = false;
+        function showFeedback(question, selectedIndex) {
+            const feedbackEl = document.getElementById("feedback");
+            const feedbackText = document.getElementById("feedbackText");
+            feedbackEl.classList.add("show");
+            feedbackText.textContent = question.feedback;
 
-        // Domain mappings
-        const domainInfo = {
-            'I': { name: 'People', weight: 0.42, questions: 76 },
-            'II': { name: 'Process', weight: 0.50, questions: 90 },
-            'III': { name: 'Business Environment', weight: 0.08, questions: 14 }
-        };
-
-        // Load saved progress
-        function loadProgress() {
-            const saved = localStorage.getItem('pmp_test_progress');
-            if (saved) {
-                const data = JSON.parse(saved);
-                currentTest = data.currentTest || 1;
-                currentQuestionIndex = data.currentQuestionIndex || 0;
-                userAnswers = data.userAnswers || {};
-                timeRemaining = data.timeRemaining || 230 * 60;
-                
-                if (data.testStartTime && !testCompleted) {
-                    // Resume test
-                    document.getElementById('testSelection').style.display = 'none';
-                    document.getElementById('testInterface').style.display = 'block';
-                    showQuestion();
-                    if (document.getElementById('timerEnabled').checked) {
-                        startTimer();
-                    }
+            const options = document.querySelectorAll(".option-item");
+            options.forEach((item, index) => {
+                if (index === question.correct) {
+                    item.classList.add("correct");
                 }
+                if (selectedIndex !== null && index === selectedIndex && selectedIndex !== question.correct) {
+                    item.classList.add("incorrect");
+                }
+            });
+        }
+
+        function clearFeedback() {
+            const feedbackEl = document.getElementById("feedback");
+            feedbackEl.classList.remove("show");
+        }
+
+        function submitAnswer() {
+            const selectedIndex = state.answers[state.currentIndex];
+            if (selectedIndex === null) {
+                return;
+            }
+            state.submitted[state.currentIndex] = true;
+            updateAnswerUI();
+            updateNavigation();
+        }
+
+        function nextQuestion() {
+            if (!state.submitted[state.currentIndex]) {
+                return;
+            }
+            if (state.currentIndex < state.questions.length - 1) {
+                state.currentIndex += 1;
+                renderQuestion();
             }
         }
 
-        // Save progress
-        function saveProgress() {
-            const data = {
-                currentTest,
-                currentQuestionIndex,
-                userAnswers,
-                timeRemaining,
-                testStartTime
-            };
-            localStorage.setItem('pmp_test_progress', JSON.stringify(data));
-        }
-
-        // Start test
-        function startTest(testNumber) {
-            currentTest = testNumber;
-            currentQuestionIndex = 0;
-            userAnswers = {};
-            testStartTime = Date.now();
-            timeRemaining = 230 * 60;
-            testCompleted = false;
-
-            document.getElementById('testSelection').style.display = 'none';
-            document.getElementById('testInterface').style.display = 'block';
-            
-            showQuestion();
-            
-            if (document.getElementById('timerEnabled').checked) {
-                startTimer();
+        function previousQuestion() {
+            if (state.currentIndex > 0) {
+                state.currentIndex -= 1;
+                renderQuestion();
             }
-            
-            saveProgress();
         }
 
-        // Timer functions
-        function startTimer() {
-            timerInterval = setInterval(() => {
-                timeRemaining--;
-                updateTimerDisplay();
-                saveProgress();
-                
-                if (timeRemaining <= 0) {
-                    clearInterval(timerInterval);
-                    alert('Time is up! The test will now be submitted automatically.');
+        function updateNavigation() {
+            const prevBtn = document.getElementById("prevBtn");
+            const submitBtn = document.getElementById("submitBtn");
+            const nextBtn = document.getElementById("nextBtn");
+            const finishBtn = document.getElementById("finishBtn");
+
+            const selectedIndex = state.answers[state.currentIndex];
+            const isSubmitted = state.submitted[state.currentIndex];
+            const isLastQuestion = state.currentIndex === state.questions.length - 1;
+
+            prevBtn.disabled = state.currentIndex === 0;
+            submitBtn.disabled = selectedIndex === null;
+            nextBtn.disabled = !isSubmitted || isLastQuestion;
+
+            if (isLastQuestion) {
+                finishBtn.style.display = "inline-block";
+                finishBtn.disabled = !isSubmitted;
+            } else {
+                finishBtn.style.display = "none";
+            }
+        }
+
+        function finishTest() {
+            stopTimer();
+            showResults();
+        }
+
+        function showResults() {
+            const totalQuestions = state.questions.length;
+            let correctCount = 0;
+            const domainStats = {};
+
+            state.questions.forEach((question, index) => {
+                const selected = state.answers[index];
+                if (!domainStats[question.domainName]) {
+                    domainStats[question.domainName] = { correct: 0, total: 0 };
+                }
+                domainStats[question.domainName].total += 1;
+                if (selected !== null && selected === question.correct) {
+                    correctCount += 1;
+                    domainStats[question.domainName].correct += 1;
+                }
+            });
+
+            const percentage = Math.round((correctCount / totalQuestions) * 100);
+            document.getElementById("scoreNumber").textContent = correctCount.toString();
+            document.getElementById("scorePercentage").textContent = `${percentage}%`;
+            document.getElementById("correctCount").textContent = correctCount.toString();
+
+            const domainResults = document.getElementById("domainResults");
+            domainResults.innerHTML = "";
+
+            let lowestDomain = null;
+            let lowestPercentage = 101;
+
+            Object.entries(domainStats).forEach(([domainName, stats]) => {
+                const domainPercent = Math.round((stats.correct / stats.total) * 100);
+                if (domainPercent < lowestPercentage) {
+                    lowestPercentage = domainPercent;
+                    lowestDomain = domainName;
+                }
+
+                const domainResult = document.createElement("div");
+                domainResult.className = "domain-result";
+                domainResult.innerHTML = `
+                    <div>
+                        <strong>${domainName}</strong>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${domainPercent}%"></div>
+                        </div>
+                    </div>
+                    <div>${domainPercent}% (${stats.correct}/${stats.total})</div>
+                `;
+                domainResults.appendChild(domainResult);
+            });
+
+            const recommendationText = document.getElementById("recommendationText");
+            if (lowestDomain) {
+                recommendationText.textContent = `Focus additional study time on ${lowestDomain} concepts to raise your overall score.`;
+            } else {
+                recommendationText.textContent = "Great work! Review any incorrect questions to reinforce learning.";
+            }
+
+            document.getElementById("testInterface").style.display = "none";
+            document.getElementById("results").classList.add("show");
+        }
+
+        function restartTest() {
+            returnToHome();
+        }
+
+        function showTestOptions() {
+            document.getElementById("testOptionsModal").style.display = "flex";
+        }
+
+        function hideTestOptions() {
+            document.getElementById("testOptionsModal").style.display = "none";
+        }
+
+        function confirmResetTest() {
+            hideTestOptions();
+            document.getElementById("resetConfirmModal").style.display = "flex";
+        }
+
+        function hideResetConfirm() {
+            document.getElementById("resetConfirmModal").style.display = "none";
+        }
+
+        function resetTest() {
+            hideResetConfirm();
+            returnToHome();
+        }
+
+        function returnToHome() {
+            stopTimer();
+            document.getElementById("testInterface").style.display = "none";
+            document.getElementById("results").classList.remove("show");
+            document.getElementById("testSelection").style.display = "block";
+        }
+
+        function startTimer(seconds) {
+            stopTimer();
+            state.timerRemainingSeconds = seconds;
+            updateTimerDisplay(state.timerRemainingSeconds);
+            state.timerInterval = setInterval(() => {
+                state.timerRemainingSeconds -= 1;
+                updateTimerDisplay(state.timerRemainingSeconds);
+                if (state.timerRemainingSeconds <= 0) {
+                    stopTimer();
                     finishTest();
                 }
             }, 1000);
         }
 
-        function updateTimerDisplay() {
-            const minutes = Math.floor(timeRemaining / 60);
-            const seconds = timeRemaining % 60;
-            const display = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-            document.getElementById('timer').textContent = display;
-            
-            // Change color as time runs low
-            const timerElement = document.getElementById('timer');
-            if (timeRemaining < 1800) { // Last 30 minutes
-                timerElement.style.background = '#e74c3c';
-            } else if (timeRemaining < 3600) { // Last hour
-                timerElement.style.background = '#f39c12';
+        function stopTimer() {
+            if (state.timerInterval) {
+                clearInterval(state.timerInterval);
+                state.timerInterval = null;
             }
         }
 
-        // Show current question
-        function showQuestion() {
-            const questions = testQuestions[currentTest];
-            const question = questions[currentQuestionIndex];
-            
-            // Update progress info
-            document.getElementById('questionProgress').textContent = 
-                `Question ${currentQuestionIndex + 1} of ${questions.length}`;
-            
-            const domainKey = question.domain.split('.')[0];
-            document.getElementById('domainInfo').textContent = 
-                `Domain ${domainKey}: ${question.domainName}`;
-            
-            // Show question
-            document.getElementById('questionTitle').textContent = 
-                `Question ${currentQuestionIndex + 1}`;
-            document.getElementById('questionText').textContent = question.question;
-            
-            // Show options
-            const optionsContainer = document.getElementById('optionsContainer');
-            optionsContainer.innerHTML = '';
-            
-            question.options.forEach((option, index) => {
-                const optionDiv = document.createElement('div');
-                optionDiv.className = 'option-item';
-                optionDiv.onclick = () => selectOption(index);
-                
-                const isSelected = question.multiSelect 
-                    ? (userAnswers[question.id] && userAnswers[question.id].includes(index))
-                    : userAnswers[question.id] === index;
-                
-                if (isSelected) {
-                    optionDiv.classList.add('selected');
-                }
-                
-                optionDiv.innerHTML = `
-                    <span class="option-label">${String.fromCharCode(65 + index)}.</span>
-                    ${option}
-                `;
-                
-                optionsContainer.appendChild(optionDiv);
-            });
-            
-            // Update navigation buttons
-            document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
-            document.getElementById('nextBtn').disabled = 
-                currentQuestionIndex === questions.length - 1 || !userAnswers[question.id];
-            
-            // Show finish button on last question
-            if (currentQuestionIndex === questions.length - 1) {
-                document.getElementById('finishBtn').style.display = 'block';
-            } else {
-                document.getElementById('finishBtn').style.display = 'none';
-            }
-            
-            // Hide feedback initially
-            document.getElementById('feedback').classList.remove('show');
-            
-            // Update submit button
-            const submitBtn = document.getElementById('submitBtn');
-            if (userAnswers[question.id] !== undefined) {
-                submitBtn.textContent = 'Change Answer';
-            } else {
-                submitBtn.textContent = 'Submit Answer';
-            }
+        function updateTimerDisplay(totalSeconds) {
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            document.getElementById("timer").textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`;
         }
 
-        // Select option
-        function selectOption(index) {
-            const questions = testQuestions[currentTest];
-            const question = questions[currentQuestionIndex];
-            
-            if (question.multiSelect) {
-                // Handle multiple selection
-                if (!userAnswers[question.id]) {
-                    userAnswers[question.id] = [];
-                }
-                
-                const answers = userAnswers[question.id];
-                const existingIndex = answers.indexOf(index);
-                
-                if (existingIndex > -1) {
-                    answers.splice(existingIndex, 1);
-                } else {
-                    answers.push(index);
-                }
-                
-                if (answers.length === 0) {
-                    delete userAnswers[question.id];
-                }
-            } else {
-                // Handle single selection
-                userAnswers[question.id] = index;
-            }
-            
-            showQuestion();
-            saveProgress();
-        }
-
-        // Submit answer
-        function submitAnswer() {
-            const questions = testQuestions[currentTest];
-            const question = questions[currentQuestionIndex];
-            const userAnswer = userAnswers[question.id];
-            
-            if (userAnswer === undefined) {
-                alert('Please select an answer before submitting.');
-                return;
-            }
-            
-            // Show feedback if immediate feedback is enabled and answer is incorrect
-            const isCorrect = question.multiSelect 
-                ? arraysEqual(userAnswer.sort(), question.correct.sort())
-                : userAnswer === question.correct;
-            
-            if (document.getElementById('immediateSubmitFeedback').checked && !isCorrect) {
-                showFeedback(question, userAnswer);
-            }
-            
-            // Enable next button
-            document.getElementById('nextBtn').disabled = false;
-            
-            // Update submit button
-            document.getElementById('submitBtn').textContent = 'Change Answer';
-            
-            saveProgress();
-        }
-
-        // Show feedback
-        function showFeedback(question, userAnswer) {
-            const feedbackDiv = document.getElementById('feedback');
-            const feedbackText = document.getElementById('feedbackText');
-            
-            feedbackText.textContent = question.feedback;
-            feedbackDiv.classList.add('show');
-            
-            // Highlight correct and incorrect options
-            const optionItems = document.querySelectorAll('.option-item');
-            optionItems.forEach((item, index) => {
-                item.classList.remove('correct', 'incorrect');
-                
-                if (question.multiSelect) {
-                    if (question.correct.includes(index)) {
-                        item.classList.add('correct');
-                    } else if (userAnswer && userAnswer.includes(index)) {
-                        item.classList.add('incorrect');
-                    }
-                } else {
-                    if (index === question.correct) {
-                        item.classList.add('correct');
-                    } else if (index === userAnswer) {
-                        item.classList.add('incorrect');
-                    }
-                }
-            });
-        }
-
-        // Navigation functions
-        function previousQuestion() {
-            if (currentQuestionIndex > 0) {
-                currentQuestionIndex--;
-                showQuestion();
-                saveProgress();
-            }
-        }
-
-        function nextQuestion() {
-            const questions = testQuestions[currentTest];
-            if (currentQuestionIndex < questions.length - 1) {
-                currentQuestionIndex++;
-                showQuestion();
-                saveProgress();
-            }
-        }
-
-        // Finish test
-        function finishTest() {
-            if (timerInterval) {
-                clearInterval(timerInterval);
-            }
-            
-            testCompleted = true;
-            
-            // Calculate results
-            const results = calculateResults();
-            
-            // Hide test interface
-            document.getElementById('testInterface').style.display = 'none';
-            
-            // Show results
-            showResults(results);
-            
-            // Clear saved progress
-            localStorage.removeItem('pmp_test_progress');
-        }
-
-        // Calculate results
-        function calculateResults() {
-            const questions = testQuestions[currentTest];
-            let totalCorrect = 0;
-            const domainScores = {};
-            
-            // Initialize domain scores
-            Object.keys(domainInfo).forEach(domain => {
-                domainScores[domain] = { correct: 0, total: 0 };
-            });
-            
-            questions.forEach(question => {
-                const domainKey = question.domain.split('.')[0];
-                const userAnswer = userAnswers[question.id];
-                
-                domainScores[domainKey].total++;
-                
-                if (userAnswer !== undefined) {
-                    const isCorrect = question.multiSelect 
-                        ? arraysEqual(userAnswer.sort(), question.correct.sort())
-                        : userAnswer === question.correct;
-                    
-                    if (isCorrect) {
-                        totalCorrect++;
-                        domainScores[domainKey].correct++;
-                    }
-                }
-            });
-            
-            return {
-                totalCorrect,
-                totalQuestions: questions.length,
-                percentage: Math.round((totalCorrect / questions.length) * 100),
-                domainScores
-            };
-        }
-
-        // Show results
-        function showResults(results) {
-            document.getElementById('results').classList.add('show');
-            
-            // Update score display
-            document.getElementById('scoreNumber').textContent = results.totalCorrect;
-            document.getElementById('scorePercentage').textContent = `${results.percentage}%`;
-            document.getElementById('correctCount').textContent = results.totalCorrect;
-            
-            // Show domain results
-            const domainResultsContainer = document.getElementById('domainResults');
-            domainResultsContainer.innerHTML = '';
-            
-            Object.keys(results.domainScores).forEach(domainKey => {
-                const score = results.domainScores[domainKey];
-                const percentage = score.total > 0 ? Math.round((score.correct / score.total) * 100) : 0;
-                
-                const domainDiv = document.createElement('div');
-                domainDiv.className = 'domain-result';
-                domainDiv.innerHTML = `
-                    <div>
-                        <strong>Domain ${domainKey}: ${domainInfo[domainKey].name}</strong>
-                        <div>${score.correct} of ${score.total} correct</div>
-                    </div>
-                    <div style="text-align: right;">
-                        <strong>${percentage}%</strong>
-                        <div class="progress-bar" style="width: 100px; margin-top: 5px;">
-                            <div class="progress-fill" style="width: ${percentage}%; background: ${percentage >= 70 ? '#27ae60' : percentage >= 60 ? '#f39c12' : '#e74c3c'}"></div>
-                        </div>
-                    </div>
-                `;
-                domainResultsContainer.appendChild(domainDiv);
-            });
-            
-            // Generate recommendations
-            generateRecommendations(results);
-        }
-
-        // Generate study recommendations
-        function generateRecommendations(results) {
-            const recommendations = [];
-            
-            // Overall performance
-            if (results.percentage >= 80) {
-                recommendations.push("🎉 Excellent performance! You're well-prepared for the PMP exam.");
-            } else if (results.percentage >= 70) {
-                recommendations.push("✅ Good performance! Review weak areas and take additional practice tests.");
-            } else if (results.percentage >= 60) {
-                recommendations.push("⚠️ Fair performance. Focus on your weak domains and study fundamental concepts.");
-            } else {
-                recommendations.push("📚 More study needed. Consider additional training and focus on all domains.");
-            }
-            
-            // Domain-specific recommendations
-            Object.keys(results.domainScores).forEach(domainKey => {
-                const score = results.domainScores[domainKey];
-                const percentage = score.total > 0 ? (score.correct / score.total) * 100 : 0;
-                
-                if (percentage < 70) {
-                    const domainName = domainInfo[domainKey].name;
-                    switch(domainKey) {
-                        case 'I':
-                            recommendations.push(`👥 ${domainName}: Focus on team leadership, conflict resolution, and stakeholder engagement. Practice servant leadership scenarios.`);
-                            break;
-                        case 'II':
-                            recommendations.push(`⚙️ ${domainName}: Review project planning, execution, monitoring, and control processes. Study earned value management and risk management.`);
-                            break;
-                        case 'III':
-                            recommendations.push(`🏢 ${domainName}: Study compliance requirements, business value delivery, and organizational change management.`);
-                            break;
-                    }
-                }
-            });
-            
-            // Study resources
-            recommendations.push("📖 Recommended study materials: PMBOK Guide 7th Edition, Agile Practice Guide, and additional practice tests.");
-            
-            document.getElementById('recommendationText').innerHTML = 
-                recommendations.map(rec => `<p>${rec}</p>`).join('');
-        }
-
-        // Show test options modal
-        function showTestOptions() {
-            document.getElementById('testOptionsModal').style.display = 'flex';
-        }
-
-        // Hide test options modal
-        function hideTestOptions() {
-            document.getElementById('testOptionsModal').style.display = 'none';
-        }
-
-        // Return to home page
-        function returnToHome() {
-            hideTestOptions();
-            
-            // Stop timer
-            if (timerInterval) {
-                clearInterval(timerInterval);
-                timerInterval = null;
-            }
-            
-            // Save current progress before returning home
-            saveProgress();
-            
-            // Hide test interface and show test selection
-            document.getElementById('testInterface').style.display = 'none';
-            document.getElementById('results').classList.remove('show');
-            document.getElementById('testSelection').style.display = 'block';
-            
-            // Reset timer display
-            const timerElement = document.getElementById('timer');
-            timerElement.textContent = '230:00';
-            timerElement.style.background = '#e74c3c';
-        }
-
-        // Show reset confirmation modal
-        function confirmResetTest() {
-            hideTestOptions();
-            document.getElementById('resetConfirmModal').style.display = 'flex';
-        }
-
-        // Hide reset confirmation modal
-        function hideResetConfirm() {
-            document.getElementById('resetConfirmModal').style.display = 'none';
-        }
-
-        // Reset test completely
-        function resetTest() {
-            hideResetConfirm();
-            
-            // Stop timer
-            if (timerInterval) {
-                clearInterval(timerInterval);
-                timerInterval = null;
-            }
-            
-            // Reset all state
-            currentTest = 1;
-            currentQuestionIndex = 0;
-            userAnswers = {};
-            testStartTime = null;
-            timeRemaining = 230 * 60;
-            testCompleted = false;
-            
-            // Clear saved progress
-            localStorage.removeItem('pmp_test_progress');
-            
-            // Hide test interface and results, show test selection
-            document.getElementById('testInterface').style.display = 'none';
-            document.getElementById('results').classList.remove('show');
-            document.getElementById('testSelection').style.display = 'block';
-            
-            // Reset timer display
-            const timerElement = document.getElementById('timer');
-            timerElement.textContent = '230:00';
-            timerElement.style.background = '#e74c3c';
-        }
-
-        // Utility function to compare arrays
-        function arraysEqual(a, b) {
-            if (a.length !== b.length) return false;
-            for (let i = 0; i < a.length; i++) {
-                if (a[i] !== b[i]) return false;
-            }
-            return true;
-        }
-
-        // Handle page visibility change (save progress when tab is hidden)
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden && !testCompleted) {
-                saveProgress();
-            }
-        });
-
-        // Handle page unload (save progress)
-        window.addEventListener('beforeunload', () => {
-            if (!testCompleted) {
-                saveProgress();
-            }
-        });
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            loadProgress();
-        });
-
-        // Restart test
-        function restartTest() {
-            // Reset all state
-            currentTest = 1;
-            currentQuestionIndex = 0;
-            userAnswers = {};
-            testStartTime = null;
-            timeRemaining = 230 * 60;
-            testCompleted = false;
-            
-            if (timerInterval) {
-                clearInterval(timerInterval);
-                timerInterval = null;
-            }
-            
-            // Clear saved progress
-            localStorage.removeItem('pmp_test_progress');
-            
-            // Hide results and show test selection
-            document.getElementById('results').classList.remove('show');
-            document.getElementById('testInterface').style.display = 'none';
-            document.getElementById('testSelection').style.display = 'block';
-            
-            // Reset timer display
-            document.getElementById('timer').textContent = '230:00';
-            document.getElementById('timer').style.background = '#e74c3c';
-        }
-
-        // Close modals when clicking outside
-        window.addEventListener('click', (e) => {
-            const testOptionsModal = document.getElementById('testOptionsModal');
-            const resetConfirmModal = document.getElementById('resetConfirmModal');
-            
-            if (e.target === testOptionsModal) {
-                hideTestOptions();
-            }
-            if (e.target === resetConfirmModal) {
-                hideResetConfirm();
-            }
-        });
-
-        // Handle escape key to close modals
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                hideTestOptions();
-                hideResetConfirm();
-            }
-            
-            // Existing keyboard shortcuts for test navigation
-            if (document.getElementById('testInterface').style.display === 'block' && 
-                !document.getElementById('testOptionsModal').style.display.includes('flex') &&
-                !document.getElementById('resetConfirmModal').style.display.includes('flex')) {
-                switch(e.key) {
-                    case 'ArrowLeft':
-                        if (!document.getElementById('prevBtn').disabled) {
-                            previousQuestion();
-                        }
-                        break;
-                    case 'ArrowRight':
-                        if (!document.getElementById('nextBtn').disabled) {
-                            nextQuestion();
-                        }
-                        break;
-                    case 'Enter':
-                        if (!document.getElementById('submitBtn').disabled) {
-                            submitAnswer();
-                        }
-                        break;
-                    case '1':
-                    case '2':
-                    case '3':
-                    case '4':
-                    case '5':
-                        const optionIndex = parseInt(e.key) - 1;
-                        const question = testQuestions[currentTest][currentQuestionIndex];
-                        if (optionIndex < question.options.length) {
-                            selectOption(optionIndex);
-                        }
-                        break;
-                }
-            }
-        });
+        updateTimerDisplay(DEFAULT_TIMER_SECONDS);
     </script>
 </body>
 </html>
