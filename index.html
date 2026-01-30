@@ -996,7 +996,7 @@
             state.currentIndex = 0;
             state.answers = new Array(state.questions.length).fill(null);
             state.submitted = new Array(state.questions.length).fill(false);
-            state.initiallyIncorrect = new Array(state.questions.length).fill(false);
+            state.initiallyIncorrect = new Array(state.questions.length).fill(null);
             state.timerEnabled = document.getElementById("timerEnabled").checked;
 
             document.getElementById("testSelection").style.display = "none";
@@ -1045,6 +1045,14 @@
 
         function handleOptionSelect(index) {
             state.answers[state.currentIndex] = index;
+            const immediateFeedbackEnabled = document.getElementById("immediateSubmitFeedback").checked;
+            if (!immediateFeedbackEnabled) {
+                if (state.initiallyIncorrect[state.currentIndex] === null) {
+                    state.initiallyIncorrect[state.currentIndex] =
+                        index !== state.questions[state.currentIndex].correct;
+                }
+                state.submitted[state.currentIndex] = true;
+            }
             updateAnswerUI();
             updateNavigation();
         }
@@ -1116,8 +1124,9 @@
             if (selectedIndex === null) {
                 return;
             }
-            if (!state.submitted[state.currentIndex]) {
-                state.initiallyIncorrect[state.currentIndex] = selectedIndex !== state.questions[state.currentIndex].correct;
+            if (state.initiallyIncorrect[state.currentIndex] === null) {
+                state.initiallyIncorrect[state.currentIndex] =
+                    selectedIndex !== state.questions[state.currentIndex].correct;
             }
             state.submitted[state.currentIndex] = true;
             updateAnswerUI();
@@ -1150,14 +1159,18 @@
             const selectedIndex = state.answers[state.currentIndex];
             const isSubmitted = state.submitted[state.currentIndex];
             const isLastQuestion = state.currentIndex === state.questions.length - 1;
+            const immediateFeedbackEnabled = document.getElementById("immediateSubmitFeedback").checked;
 
             prevBtn.disabled = state.currentIndex === 0;
+            submitBtn.style.display = immediateFeedbackEnabled ? "inline-block" : "none";
             submitBtn.disabled = selectedIndex === null;
-            nextBtn.disabled = !isSubmitted || isLastQuestion;
+            nextBtn.disabled = immediateFeedbackEnabled
+                ? !isSubmitted || isLastQuestion
+                : selectedIndex === null || isLastQuestion;
 
             if (isLastQuestion) {
                 finishBtn.style.display = "inline-block";
-                finishBtn.disabled = !isSubmitted;
+                finishBtn.disabled = immediateFeedbackEnabled ? !isSubmitted : selectedIndex === null;
             } else {
                 finishBtn.style.display = "none";
             }
