@@ -1063,7 +1063,9 @@
             applySelectedClass(selectedIndex);
 
             if (isSubmitted) {
-                showFeedback(question, selectedIndex);
+                if (isIncorrect) {
+                    showFeedback(question, selectedIndex);
+                }
                 return;
             }
 
